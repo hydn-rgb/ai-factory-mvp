@@ -1,8 +1,8 @@
 # T3 · DSH 缓冲层 校验报告
 
 - 生成时间: 2026-11-21T10:33:05
-- 生成器: `D:\AI_Factory\ops\buffer\dsh_buffer.py`
-- 产物: `D:\AI_Factory\ops\buffer\dsh_buffer.py`
+- 生成器: `<AI_FACTORY_ROOT>\ops\buffer\dsh_buffer.py`
+- 产物: `<AI_FACTORY_ROOT>\ops\buffer\dsh_buffer.py`
 - 产物 sha256: `d3916e03f542c4b3b6918fd57e1723a01e5be6fb6056168befc58d0769debec9`
 - 自检: **21/21 PASS**
 
@@ -12,8 +12,8 @@
 
 | 对象 | 值 |
 |---|---|
-| 任务卡 | `D:\AI_Factory\ops\bus\tasks\T3.md`（21 行 / 上限 20，输入缓冲 REJECT） |
-| state.json | `D:\AI_Factory\ops\bus\state.json`（本任务 status=todo） |
+| 任务卡 | `<AI_FACTORY_ROOT>\ops\bus\tasks\T3.md`（21 行 / 上限 20，输入缓冲 REJECT） |
+| state.json | `<AI_FACTORY_ROOT>\ops\bus\state.json`（本任务 status=todo） |
 
 > 回执核验结果见 `ops/buffer/verify_T3.json` 与 `ops/bus/out/T3.json`。回执要绑定本报告 sha，故不能把回执结论写进本报告（避免自指）。
 
@@ -61,7 +61,7 @@
 | 18 | 验收④ DSH 直写任务卡 → 拒收 | PASS | `{'allowed': False, 'reason': 'PROTECTED_FOR_DSH', 'rule': 'ops/bus/tasks/*', 'event': 'DSH_PROTECTED_WRITE_REJECTED'}` |
 | 19 | 验收④ 拒收事件已落盘 | PASS | `events=4` |
 | 20 | 安全缓冲: 非保护路径放行 | PASS | `{'allowed': True, 'reason': 'NOT_PROTECTED', 'rule': ''}` |
-| 21 | 安全缓冲: 只能提案且不写目标 | PASS | `D:\AI_Factory\ops\buffer\test_tmp\20261121_103305_204036\proposals\prop-20261121T103305240926.json` |
+| 21 | 安全缓冲: 只能提案且不写目标 | PASS | `<AI_FACTORY_ROOT>\ops\buffer\test_tmp\20261121_103305_204036\proposals\prop-20261121T103305240926.json` |
 
 ## 五、未验证 / 开放项
 

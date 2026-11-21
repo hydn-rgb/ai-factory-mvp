@@ -333,11 +333,11 @@ async function factoryDsImport(input) {
 }
 
 const PERSONA_FILES = {
-  "dou_persona": "archive/笔记/豆豆【角色卡】.txt",
-  "l8_worldbook": "archive/笔记/小狗钱钱【世界书】.txt",
-  "ai_biography": "archive/笔记/豆豆人物小传【AI视角】.txt",
-  "boss_card": "data/exports/20261117/角色卡_老板.json",
-  "factory_card": "data/exports/20261117/角色卡_工厂.json",
+  "persona_main": "archive/笔记/<角色卡文件>.txt",
+  "l8_worldbook": "archive/笔记/<世界书文件>.txt",
+  "ai_biography": "archive/笔记/<AI小传文件>.txt",
+  "boss_card": "data/exports/20261117/角色卡_<名称>.json",
+  "factory_card": "data/exports/20261117/角色卡_<名称>.json",
   "core_conflict": "data/exports/20261117/主要矛盾.json",
   "psyche_skill": ".opencode/skills/psyche-card-forge/SKILL.md",
 };
@@ -346,7 +346,7 @@ async function factoryPersona(input) {
   const variant = input.variant || "redacted";
   if (!["redacted", "mosaic", "full"].includes(variant)) return errorResult("variant 必须是 redacted/mosaic/full");
   if (variant === "full" && input.allow_full !== true) return errorResult("full 版本需显式 allow_full=true；默认只返回脱敏版");
-  const id = input.id || "dou_persona";
+  const id = input.id || "persona_main";
   const rel = PERSONA_FILES[id];
   if (!rel) return errorResult("未知 persona id；可用: " + Object.keys(PERSONA_FILES).join(","));
   const p = join(FACTORY, rel);
@@ -442,7 +442,7 @@ const TOOLS = [
     input: {
       type: "object",
       properties: {
-        id: { type: "string", description: "dou_persona/l8_worldbook/ai_biography/boss_card/factory_card/core_conflict/psyche_skill" },
+        id: { type: "string", description: "persona_main/l8_worldbook/ai_biography/boss_card/factory_card/core_conflict/psyche_skill" },
         variant: { type: "string", description: "redacted(默认)/mosaic/full" },
         allow_full: { type: "boolean" },
       },

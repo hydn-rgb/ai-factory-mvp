@@ -39,6 +39,9 @@
           <button id="fds-now" style="flex:1">抓取当前对话</button>
           <button id="fds-share" style="flex:1">分享链接导入</button>
         </div>
+        <div style="display:flex;gap:4px;margin-top:4px">
+          <button id="fds-open" style="flex:1">打开保存目录</button>
+        </div>
         <div id="fds-status" style="margin-top:6px;opacity:.8;word-break:break-all">就绪；先登录 DS 并打开一段对话。</div>
       </div>`;
     Object.assign(panel.style, {
@@ -67,6 +70,13 @@
       b.style.display = b.style.display === "none" ? "" : "none";
     };
     panel.querySelector("#fds-now").onclick = () => sendCurrent();
+    panel.querySelector("#fds-open").onclick = async () => {
+      try {
+        const r = await origFetch("http://127.0.0.1:8791/command", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ cmd: "open_capture" }) });
+        const j = await r.json();
+        status(j.ok ? "已打开：" + j.path : "失败：" + j.error);
+      } catch (e) { status("桥接失败：" + e.message); }
+    };
     panel.querySelector("#fds-share").onclick = () => {
       const link = prompt("粘贴 chat.deepseek.com/share/... 链接或 share_id：");
       if (link) importShare(link);
@@ -98,7 +108,7 @@
         body: JSON.stringify({ source, url: location.href, ts: Date.now(), payload }),
       });
       const j = await res.json();
-      status(j.ok ? "已落盘 " + j.turns + " 回合" : ("失败：" + (j.error || res.status)));
+      status(j.ok ? ("已落盘 " + j.turns + " 回合\n" + (j.card || "")) : ("失败：" + (j.error || res.status)));
     } catch (e) {
       status("桥接失败：" + e.message + "（先启动 bridge.js）");
     }

@@ -9,8 +9,8 @@
 累计代表产品数（2020–2026），美国 13 个 / 中国 15 个。
 
 本地文件：
-- `D:\AI_Factory\reports\cases\chart_events.png`
-- `D:\AI_Factory\reports\cases\chart_products.png`
+- `<AI_FACTORY_ROOT>\reports\cases\chart_events.png`
+- `<AI_FACTORY_ROOT>\reports\cases\chart_products.png`
 
 ## 二、可滚动对比的数据表
 

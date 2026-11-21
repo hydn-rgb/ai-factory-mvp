@@ -3,7 +3,7 @@
 import json, hashlib, re, sys, tempfile, os
 from pathlib import Path
 
-BUS = Path(r"D:\AI_Factory\ops\bus")
+BUS = Path(__file__).resolve().parents[2] / "ops" / "bus"
 REQ = ("task_id", "owner", "status", "artifact", "sha", "rows")
 OK_STATUS = ("PASS", "FAIL", "UNVERIFIED")
 RECEIPT_RE = re.compile(r"^T\d+\.json$")

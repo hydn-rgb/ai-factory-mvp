@@ -2,24 +2,50 @@
 // 白名单命令；不执行任意 JS；不读 cookie/token；所有本地动作走 127.0.0.1:8791。
 (() => {
   const BRIDGE = "http://127.0.0.1:8791/command";
-  let root, input, logEl, history = [], hi = -1;
+  let root, input, logEl, capEl, history = [], hi = -1;
+  const CAPS = [
+    ["📊", "/status", "看工厂现在有哪些卡在跑：open / done / cancelled"],
+    ["✅", "/audit", "验收 T0/T1/T2 三张收束卡，确认没有假完成"],
+    ["🔁", "/handoff", "拿最新交接文件，开新窗口不用人肉传话"],
+    ["📥", "/ds", "看 DS 悬浮窗最近一次抓到哪段对话"],
+    ["🔍", "/probe <url>", "探针任意公开网页：状态码、字节、sha、耗时"],
+    ["📝", "/note <文本>", "记一条观察进本地收件箱（自动打码手机号/邮箱）"],
+    ["📄", "/capture", "把当前网页正文抓进工厂，按 A/B/C/D 复核"],
+    ["➡️", "/goto <url>", "跳到任意页面，例如豆包手机宣传片体验页"],
+    ["👆", "/click <文字>", "按文字点页面上的按钮/链接"],
+    ["⌨️", "/fill <标签> <值>", "按 placeholder/label 找输入框填入"],
+    ["📂", "/open_capture", "打开 DS 捕获文件所在目录"],
+  ];
 
   function build() {
     root = document.createElement("div");
     root.id = "factory-edge-commander";
     root.innerHTML = `
-      <div id="fec-head" style="padding:5px 8px;background:#0f172a;color:#e2e8f0;cursor:move;font:12px system-ui;border-radius:8px 8px 0 0">
-        <b>⌘ Factory 命令窗</b><span style="opacity:.6"> /help</span>
-        <button id="fec-close" style="float:right;background:none;border:0;color:#e2e8f0;cursor:pointer">×</button>
+      <div id="fec-head" style="padding:5px 8px;background:linear-gradient(90deg,#312e81,#7c3aed,#db2777);color:#fff;cursor:move;font:12px system-ui;border-radius:8px 8px 0 0">
+        <span id="fec-orb" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#a7f3d0;margin-right:6px;box-shadow:0 0 8px #34d399;animation:fecpulse 2s infinite"></span>
+        <b>Factory 助手</b><span style="opacity:.7"> 说一句，或点“功能说明”</span>
+        <button id="fec-cards" style="float:right;background:rgba(255,255,255,.18);border:0;color:#fff;border-radius:4px;cursor:pointer;padding:1px 5px">功能说明</button>
+        <button id="fec-close" style="float:right;background:none;border:0;color:#fff;cursor:pointer;margin-right:4px">×</button>
       </div>
-      <div style="background:#020617;color:#e2e8f0;padding:8px;font:12px/1.5 system-ui;width:330px;border-radius:0 0 8px 8px">
+      <div style="background:rgba(2,6,23,.92);backdrop-filter:blur(10px);color:#e2e8f0;padding:8px;font:12px/1.5 system-ui;width:360px;border-radius:0 0 8px 8px">
         <input id="fec-input" placeholder="/status  /probe https://...  /goto ..." style="width:100%;box-sizing:border-box;background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:5px;padding:6px;font:12px system-ui">
+        <div id="fec-cap" style="display:none;margin-top:8px;max-height:260px;overflow:auto"></div>
         <pre id="fec-log" style="max-height:150px;overflow:auto;white-space:pre-wrap;word-break:break-all;margin:6px 0 0;opacity:.85"></pre>
-      </div>`;
+      </div>
+      <style>@keyframes fecpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}</style>`;
     Object.assign(root.style, { position: "fixed", left: "20px", bottom: "20px", zIndex: "2147483646", boxShadow: "0 6px 24px rgba(0,0,0,.5)", borderRadius: "8px" });
     document.body.appendChild(root);
     input = root.querySelector("#fec-input");
     logEl = root.querySelector("#fec-log");
+    capEl = root.querySelector("#fec-cap");
+    capEl.innerHTML = '<div style="font-size:11px;opacity:.7;margin-bottom:6px">Siri 式能力说明 · 点卡片直接填入命令</div>' +
+      '<div style="display:grid;grid-template-columns:1fr;gap:4px">' +
+      CAPS.map((c) => '<div data-cmd="' + c[1].split(' ')[0] + '" style="display:flex;gap:6px;align-items:center;padding:4px 6px;background:#1e293b;border:1px solid #334155;border-radius:6px;cursor:pointer">' +
+        '<span>' + c[0] + '</span><span><b>' + c[1] + '</b><br><span style="opacity:.7">' + c[2] + '</span></span></div>').join('') + '</div>';
+    capEl.querySelectorAll("[data-cmd]").forEach((el) => {
+      el.onclick = () => { const c = CAPS.find((x) => x[1].split(' ')[0] === el.getAttribute('data-cmd')); input.value = c[1]; input.focus(); };
+    });
+    root.querySelector("#fec-cards").onclick = () => { capEl.style.display = capEl.style.display === "none" ? "" : "none"; };
     root.querySelector("#fec-close").onclick = () => { root.style.display = "none"; };
     input.addEventListener("keydown", (e) => {
       if (e.key === "Enter") { e.preventDefault(); run(input.value); input.value = ""; }

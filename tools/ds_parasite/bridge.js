@@ -40,6 +40,10 @@ function pickMessages(payload) {
 
 function textOf(msg) {
   if (typeof msg === "string") return msg;
+  // DeepSeek share 接口把正文放在 fragments 里：REQUEST / RESPONSE / THINK
+  if (Array.isArray(msg?.fragments)) {
+    return msg.fragments.filter((f) => f && f.type !== "THINK").map((f) => f.content || "").join("\n");
+  }
   const c = msg?.content ?? msg?.text ?? msg?.message ?? msg?.body ?? "";
   if (typeof c === "string") return c;
   if (Array.isArray(c)) return c.map((x) => (typeof x === "string" ? x : x?.text || x?.content || "")).join("\n");
@@ -144,7 +148,12 @@ async function dispatch(input) {
     status: () => cmdStatus(), audit: () => cmdAudit(), handoff: () => cmdHandoff(),
     ds: () => cmdDs(), note: () => cmdNote(arg), probe: () => cmdProbe(arg),
     capture: () => cmdCapture(input),
-    help: () => ({ ok: true, cmd: "help", commands: ["/status", "/audit", "/handoff", "/ds", "/probe <url>", "/capture", "/note <文本>", "/goto <url>", "/click <文字>", "/fill <标签> <值>"] }),
+    open_capture: () => {
+      const dir = join(ROOT, "reports", "ds_capture");
+      spawnSync("explorer.exe", [dir], { windowsHide: true });
+      return { ok: true, cmd: "open_capture", path: dir };
+    },
+    help: () => ({ ok: true, cmd: "help", commands: ["/status", "/audit", "/handoff", "/ds", "/probe <url>", "/capture", "/note <文本>", "/goto <url>", "/click <文字>", "/fill <标签> <值>", "/open_capture"] }),
   };
   if (!map[cmd]) return { ok: false, error: "未知命令：" + cmd + "；用 /help 查看" };
   return await map[cmd]();

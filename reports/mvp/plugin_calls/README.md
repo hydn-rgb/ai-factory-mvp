@@ -2,7 +2,7 @@
 
 ## 1. 这不是演练
 
-- 插件 `plugins/factory_ops` 已装入 `C:\Users\doudo\.config\opencode\opencode.json`（备份：`opencode.json.bak-factory-ops-*`），并在 **OpenCode V2 当前会话**通过 `opencode reload` 生效。
+- 插件 `plugins/factory_ops` 已装入 `<USER_HOME>\.config\opencode\opencode.json`（备份：`opencode.json.bak-factory-ops-*`），并在 **OpenCode V2 当前会话**通过 `opencode reload` 生效。
 - 调用方式：Code Mode 下 `tools.factory.factory_status({})` / `tools.factory.factory_audit({tasks:[...]})` / `tools.factory.factory_case({id:"T1"})` / `tools.factory.factory_probe({url:"..."})`。
 - 每次执行由插件 `execute` 直接 `appendFileSync` 写入 `calls.jsonl`；不是测试桩、不是文档示例、不是"单测通过"冒充调用。
 - 原始日志：`calls.jsonl`（60 行，UTF-8，每行一条 JSON）；sha256 = `dc40c3dcedb4e67bbcf770e97480222bac6dd7e42c5aceea022679bebcb3ab76`。

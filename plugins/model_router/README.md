@@ -2,7 +2,7 @@
 
 零依赖 OpenCode V2 本地插件。按**会话 + 任务类型**在 DeepSeek flash / pro / 本地 Ollama 之间切换，降低无效花费。
 
-- 插件目录：`D:\AI_Factory\plugins\model_router\`
+- 插件目录：`<AI_FACTORY_ROOT>\plugins\model_router\`
 - 实测环境：OpenCode `v2.2.5`（Desktop 自带 `opencode-cli.exe`）
 - 依赖：无。只用 Node 内置模块和 OpenCode 自带插件运行时。
 - 不改 DSH / WorkBuddy 配置；不写任何 key。
@@ -39,7 +39,7 @@
 
 ```powershell
 # 1) 备份 + 写入全局配置（脚本内部会再备份一次）
-powershell -NoProfile -ExecutionPolicy Bypass -File D:\AI_Factory\plugins\model_router\install.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File <AI_FACTORY_ROOT>\plugins\model_router\install.ps1
 
 # 2) 重启 OpenCode，或
 opencode reload
@@ -59,10 +59,10 @@ opencode reload
 
 ```powershell
 # 只移出配置（推荐；代码留着方便再装）
-powershell -NoProfile -ExecutionPolicy Bypass -File D:\AI_Factory\plugins\model_router\rollback.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File <AI_FACTORY_ROOT>\plugins\model_router\rollback.ps1
 
 # 或连目录一起删（任务卡要求的最彻底回滚）
-powershell -NoProfile -ExecutionPolicy Bypass -File D:\AI_Factory\plugins\model_router\rollback.ps1 -DeletePluginDir
+powershell -NoProfile -ExecutionPolicy Bypass -File <AI_FACTORY_ROOT>\plugins\model_router\rollback.ps1 -DeletePluginDir
 ```
 
 然后重启 OpenCode。删除插件目录 + 重启后，OpenCode 会话恢复原生模型选择，行为与装前一致。
@@ -70,7 +70,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File D:\AI_Factory\plugins\model_
 ## 验证
 
 ```powershell
-cd D:\AI_Factory\plugins\model_router
+cd <AI_FACTORY_ROOT>\plugins\model_router
 node test_router.mjs
 ```
 

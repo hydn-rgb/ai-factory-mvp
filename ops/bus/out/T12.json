@@ -6,9 +6,9 @@
  "sha": "fb6191eb1d3d11a520d617280c470a9f4718f6b2074d2249cc05019a1ca9f9fd",
  "rows": 12,
  "plugin_sha": "ba5a01192d685b4c",
- "installed_to": "C:\\Users\\doudo\\.config\\opencode\\opencode.json",
+ "installed_to": "<USER_HOME>\\.config\\opencode\\opencode.json",
  "plugin": "D:/AI_Factory/plugins/model_router",
- "config_backup": "C:\\Users\\doudo\\.config\\opencode\\opencode.json.bak-model-router-20261121122615",
+ "config_backup": "<USER_HOME>\\.config\\opencode\\opencode.json.bak-model-router-20261121122615",
  "evidence": "node test_router.mjs -> ALL PASS; opencode.json plugins=[model_router]",
  "test_log": "D:\\AI_Factory\\plugins\\model_router\\test_log.jsonl",
  "acceptance": {

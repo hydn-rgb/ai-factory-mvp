@@ -31,7 +31,7 @@
 |---|---|---|---|
 | 飞书多维表 | app `TI5Lbesh1afNDHsSW0oclcsrn8f`；看板 `tblPxaHvDmfBMD1e`；工具观察 `tblMcv5Be0sSrz4S`；预测 `tbl48OkD4dvw73c5`；下注 `tblp29KGfi5v49Ah` | 在用 | 只读/人工写入；不在本仓库存 token |
 | AgentHUD | `D:\Apps\AgentHUD`（0.6.7） | 在用 | 备份 `AgentHUD.bak-0.6.4`；升级后是否重索引 `UNVERIFIED` |
-| OpenCode 配置 | `C:\Users\doudo\.config\opencode\opencode.json` | 在用 | plugins=[model_router]；改前自动备份 |
+| OpenCode 配置 | `<USER_HOME>\.config\opencode\opencode.json` | 在用 | plugins=[model_router]；改前自动备份 |
 
 ## 不在清单里的东西
 

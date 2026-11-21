@@ -1,13 +1,13 @@
 # HANDOFF · AI 工厂调度台接管说明
 
 - 更新: 2026-11-21 14:05（T0–T2 已收束）
-- 适用: 任何新窗口/新人/新 agent 接手 `D:\AI_Factory`
+- 适用: 任何新窗口/新人/新 agent 接手 `<AI_FACTORY_ROOT>`
 - 原则: **先保命，再推进；状态只认 `ops/bus/state.json`；没有回执的“完成”一律不算。**
 
 ## 一、30 秒判断系统是否活着
 
 ```powershell
-cd D:\AI_Factory
+cd <AI_FACTORY_ROOT>
 & 'C:\Program Files\python\python.exe' -X utf8 ops\bus\status.py
 ```
 
@@ -76,7 +76,7 @@ cd D:\AI_Factory
 | `open > 12` | 先 `cancelled` 或拆小；禁止新建卡 |
 | heartbeat 停更 | 跑 `audit.py --apply`；仍不写就查 `ops/bus` 写权限 |
 | 探针大批 521/412 | 源站/风控，不是脚本 bug；记录不可达，降 `UNVERIFIED`，不绕 |
-| 模型路由失效 | 查 `C:\Users\doudo\.config\opencode\opencode.json` 的 `plugins`；用 `rollback.ps1` 回滚 |
+| 模型路由失效 | 查 `<USER_HOME>\.config\opencode\opencode.json` 的 `plugins`；用 `rollback.ps1` 回滚 |
 
 ## 七、当前产物指针（sha16 见资产清单）
 
