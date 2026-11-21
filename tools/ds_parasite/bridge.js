@@ -213,7 +213,20 @@ function skillDirs() {
   return dirs;
 }
 function Path_isAbsolute(p) { return /^[A-Za-z]:[\\/]/.test(String(p)) || String(p).startsWith("/"); }
-function allSkills() {
+const ALIAS_OVERRIDE = {
+  "psyche-card-forge": ["角色卡锻造", "本地生成角色卡与世界书，含完整/脱敏/马赛克三版"],
+  "persona-case-simulator": ["人物案例模拟", "用真实人物公开资料生成带证据级的可交互角色卡"],
+  "human-network-graph": ["人物关系图谱", "把真人角色卡与关系交集结构化成可检索图谱"],
+  "whitehat-socratic-mentor": ["白客苏格拉底导师", "按角色卡画像个性化引导零基础转型学习路线"],
+  "compliance-agency-guard": ["合规机构守卫", "检查对外动作是否越过合规与机构红线"],
+};
+function friendly(desc, name) {
+  const raw = String(desc || "").replace(/\s+/g, " ").trim();
+  const first = raw.split(/[。；;，,|｜]/)[0].slice(0, 46);
+  return { alias: ALIAS_OVERRIDE[name]?.[0] || first || name, purpose: ALIAS_OVERRIDE[name]?.[1] || (raw.length > 46 ? raw.slice(0, 46) + "…" : raw) || "用途见 SKILL.md" };
+}
+const SKILL_CATALOG_PY = "import sys,json;sys.path.insert(0,'.');import skill_catalog;print(json.dumps([{k:(str(v) if k=='path' else v) for k,v in r.items()} for r in skill_catalog.scan()],ensure_ascii=False))";
+function scanSkillsLocal() {
   const out = [];
   for (const dir of skillDirs()) {
     let entries = [];
@@ -225,25 +238,45 @@ function allSkills() {
       const t = readFileSync(p, "utf8");
       const nm = t.match(/^name:\s*(.+)$/m);
       const ds = t.match(/^description:\s*(.+)$/m);
-      out.push({ name: (nm && nm[1] || e).trim(), description: (ds && ds[1] || "").trim().slice(0, 120), path: p });
+      const name = (nm && nm[1] || e).trim();
+      const desc = (ds && ds[1] || "").trim().slice(0, 300);
+      const f = friendly(desc, name);
+      out.push({ name, description: desc, alias: f.alias, purpose: f.purpose, category: "其他", path: p });
     }
   }
   return out;
 }
+function allSkills() {
+  // 优先用飞书技能表同源的 skill_catalog.py，拿到中文一句话用途与分类
+  try {
+    const r = spawnSync(PYTHON, ["-X", "utf8", "-c", SKILL_CATALOG_PY], {
+      cwd: join(ROOT, "cyber_cockpit", "tools"), encoding: "utf8", timeout: 30_000, maxBuffer: 4 * 1024 * 1024,
+    });
+    if (!r.error && r.status === 0 && r.stdout) {
+      const rows = JSON.parse(r.stdout).map((x) => {
+        const alias = ALIAS_OVERRIDE[x.name]?.[0] || String(x.purpose || "").split(/[，。；,;]/)[0].slice(0, 14) || x.name;
+        const purpose = ALIAS_OVERRIDE[x.name]?.[1] || x.purpose || x.description || "用途见 SKILL.md";
+        return { name: x.name, description: x.description || "", alias, purpose, category: x.category || "其他", path: x.path };
+      });
+      if (rows.length) return rows;
+    }
+  } catch {}
+  return scanSkillsLocal();
+}
 function cmdSkills(arg) {
   let list = allSkills();
   if (arg) {
-    list = list.map((s) => ({ ...s, score: fuzzyScore(s.name + " " + s.description, arg) })).filter((s) => s.score > 0).sort((a, b) => b.score - a.score);
+    list = list.map((s) => ({ ...s, score: fuzzyScore(s.name + " " + s.alias + " " + s.purpose + " " + s.description, arg) })).filter((s) => s.score > 0).sort((a, b) => b.score - a.score);
   }
-  return { ok: true, cmd: "skills", count: list.length, skills: list.slice(0, 80).map(({ name, description, path }) => ({ name, description, path })) };
+  return { ok: true, cmd: "skills", count: list.length, skills: list.slice(0, 200).map(({ name, alias, purpose, category, path }) => ({ name, alias, purpose, category, path })) };
 }
 function cmdSkill(arg) {
   const q = String(arg || "").trim();
-  const list = allSkills().map((s) => ({ ...s, score: fuzzyScore(s.name, q) || fuzzyScore(s.description, q) })).filter((s) => s.score > 0).sort((a, b) => b.score - a.score);
+  const list = allSkills().map((s) => ({ ...s, score: fuzzyScore(s.name + " " + s.alias + " " + s.purpose, q) })).filter((s) => s.score > 0).sort((a, b) => b.score - a.score);
   if (!list.length) return { ok: false, error: "没匹配到技能：" + q };
   const s = list[0];
   const t = readFileSync(s.path, "utf8");
-  return { ok: true, cmd: "skill", name: s.name, path: s.path, score: s.score, excerpt: t.slice(0, 3000) };
+  return { ok: true, cmd: "skill", name: s.name, alias: s.alias, purpose: s.purpose, category: s.category, path: s.path, score: s.score, excerpt: t.slice(0, 3000) };
 }
 function cmdCard(arg) {
   const id = String(arg || "").toUpperCase().match(/T\d+/)?.[0];
@@ -258,8 +291,8 @@ function cmdFind(arg) {
   if (!q) return { ok: false, error: "用法：/find 关键词" };
   const hits = [];
   for (const s of allSkills()) {
-    const sc = fuzzyScore(s.name + " " + s.description, q);
-    if (sc) hits.push({ type: "skill", name: s.name, cmd: "/skill " + s.name, score: sc, path: s.path });
+    const sc = fuzzyScore(s.name + " " + s.alias + " " + s.purpose + " " + s.description, q);
+    if (sc) hits.push({ type: "skill", name: s.alias + "（" + s.name + "）", cmd: "/skill " + s.name, score: sc, purpose: s.purpose, path: s.path });
   }
   const CASE_KW = {
     T0: "范围 mvp 边界 签收 发布 同行定位", T1: "幻方 highflyer deepseek 梁文锋 算力",
@@ -280,6 +313,14 @@ function cmdFind(arg) {
   return { ok: true, cmd: "find", query: q, count: hits.length, hits: hits.slice(0, 30) };
 }
 
+function cmdSkillCatalog() {
+  const list = allSkills().sort((a, b) => a.alias.localeCompare(b.alias, "zh"));
+  const lines = ["# 技能目录（一句话用途）", "", "- 生成时间：" + new Date().toISOString(), "- 技能数：" + list.length, "- 改名规则：显示友好名，原名保留供 OpenCode 调用；不重命名目录，避免破坏引用。", "", "| 友好名（选项显示） | 原名（调用用） | 分类 | 一句话用途 | 路径 |", "|---|---|---|---|---|"];
+  for (const s of list) lines.push("| " + s.alias + " | `" + s.name + "` | " + s.category + " | " + s.purpose.replace(/\|/g, "｜") + " | `" + s.path.replace(/^.*[\\/]AI_Factory[\\/]/, "") + "` |");
+  lines.push("", "> 与飞书「技能」表同源（skill_catalog.py）；五列分别是 友好名 / 原名 / 分类 / 一句话用途 / 路径。");
+  return { ok: true, cmd: "skill_catalog", count: list.length, markdown: lines.join("\n") };
+}
+
 async function dispatch(input) {
   const cmd = String(input.cmd || "").replace(/^\//, "").trim().toLowerCase();
   const arg = String(input.arg || "").trim();
@@ -292,6 +333,7 @@ async function dispatch(input) {
     inventory: () => cmdDoc("reports/inventory/ACTIVE_INVENTORY.md", "inventory"),
     selftest: () => cmdSelftest(),
     skills: () => cmdSkills(arg), skill: () => cmdSkill(arg), card: () => cmdCard(arg), find: () => cmdFind(arg),
+    skill_catalog: () => cmdSkillCatalog(),
     open_capture: () => {
       const dir = join(ROOT, "reports", "ds_capture");
       spawnSync("explorer.exe", [dir], { windowsHide: true });

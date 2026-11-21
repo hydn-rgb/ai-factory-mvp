@@ -24,6 +24,7 @@
     ["📖", "/skill <名称>", "读某技能的 SKILL.md 说明"],
     ["🗃", "/card T14", "读任务卡（T14/T15 仍未验证）"],
     ["🔎", "/find <关键词>", "按模糊词查技能 / 案例 / 任务卡"],
+    ["📤", "/skill_catalog", "生成技能目录：友好名 + 原名 + 一句话用途（可贴飞书）"],
   ];
   const KW = {
     "/status": "状态 任务 卡 open done 收束 现在",
@@ -47,6 +48,7 @@
     "/skill": "技能 说明 怎么用",
     "/card": "任务卡 卡片 t14 t15 开放",
     "/find": "查找 搜索 匹配 模糊 项目",
+    "/skill_catalog": "技能目录 改名 飞书 一句话用途 清单",
   };
   let root, input, logEl, capEl, optEl, skills = [], history = [], hi = -1, sel = -1, finding = false;
 
@@ -148,7 +150,7 @@
       rows.push(optionRow(icon, cmd, desc));
     };
     for (const c of CAPS) add(c[0], c[1], c[2], c[2]);
-    if (q) for (const s of skills) add("🧩", "/skill " + s.name, s.description || s.name, s.name + " " + s.description);
+    if (q) for (const s of skills) add("🧩", "/skill " + s.name, (s.alias || s.name) + "：" + (s.purpose || ""), (s.alias || "") + " " + (s.purpose || "") + " " + s.name);
     optEl.innerHTML = rows.join('') || '<div style="opacity:.6;padding:4px">没有匹配项，试试 /find 关键词</div>';
     optEl.querySelectorAll("[data-cmd]").forEach(bindRow);
     sel = -1;
