@@ -14,10 +14,10 @@
 
 1. 启动桥接：
    ```powershell
-   powershell -ExecutionPolicy Bypass -File D:\AI_Factory\tools\ds_parasite\start.ps1
+   powershell -ExecutionPolicy Bypass -File <repo>\tools\ds_parasite\start.ps1
    ```
    看到 `DS bridge on http://127.0.0.1:8791` 即可；窗口别关。
-2. Edge 地址栏打开 `edge://extensions/` → 开启"开发人员模式" → "加载解压缩的扩展" → 选 `D:\AI_Factory\tools\ds_parasite\extension`。
+2. Edge 地址栏打开 `edge://extensions/` → 开启"开发人员模式" → "加载解压缩的扩展" → 选 `<repo>\tools\ds_parasite\extension`。
 3. 打开 `https://chat.deepseek.com/` 登录。悬浮窗出现在右上角，可拖动、可最小化。
 
 ## 用法
@@ -41,7 +41,7 @@
 
 ## 保存位置与功能说明
 
-- 落盘目录固定为 `D:\AI_Factory\reports\ds_capture\`：`capture_*.json`（原始）、`card_*.md`（脱敏案例卡）、`latest.json`（最新指针）。
+- 落盘目录固定为 `<repo>\reports\ds_capture\`：`capture_*.json`（原始）、`card_*.md`（脱敏案例卡）、`latest.json`（最新指针）。
 - 悬浮窗抓到后会在状态栏显示**完整保存路径**；点 **打开保存目录** 可直接用资源管理器打开。
 - DS 分享页的正文在 `fragments` 里（`REQUEST`/`RESPONSE`，`THINK` 跳过）；解析器已支持，分享链接导入实测 20 回合成功。
 

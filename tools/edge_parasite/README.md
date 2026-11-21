@@ -26,9 +26,9 @@
 
 1. 桥接服务（与 DS 悬浮窗共用）：
    ```powershell
-   powershell -ExecutionPolicy Bypass -File D:\AI_Factory\tools\ds_parasite\start.ps1
+   powershell -ExecutionPolicy Bypass -File <repo>\tools\ds_parasite\start.ps1
    ```
-2. Edge：`edge://extensions/` → 开发人员模式 → 加载解压缩的扩展 → 选 `D:\AI_Factory\tools\edge_parasite\extension`。
+2. Edge：`edge://extensions/` → 开发人员模式 → 加载解压缩的扩展 → 选 `<repo>\tools\edge_parasite\extension`。
 3. 任意页面左下角出现命令窗；`Ctrl+Shift+Y` 可收起/展开，`↑/↓` 翻历史。
 
 ## 豆包宣传片体验怎么走
