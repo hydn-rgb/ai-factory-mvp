@@ -1,0 +1,72 @@
+{
+ "task_id": "T7",
+ "owner": "W7",
+ "status": "PASS",
+ "artifact": "..\\..\\ops\\probe\\T7_ds_process_probe.md",
+ "sha": "724a956fbd24c95212132f9212074e09e7d330b4a2db2a25ecaf33e5d9ebd399",
+ "sha16": "724a956fbd24c952",
+ "rows": 10,
+ "artifact_kind": "one-page copyable checklist",
+ "request": "读 ops\\bus\\tasks\\T7.md，做 DS 流程探针，回执写 out\\T7.json",
+ "scope": "仅公开 GitHub 仓库 / arXiv 论文 / 官方文档；未访问 DS 内部系统",
+ "source_access_date": "2026-11-21",
+ "acceptance": {
+  "min_3_one_person_ready": "PASS 10/10",
+  "every_row_has_source": "PASS 10/10",
+  "zero_internal_permission": "PASS 0 条",
+  "evidence_levels": {
+   "A": 7,
+   "B": 3,
+   "C": 0,
+   "D": 0
+  },
+  "no_fabricated_process": "PASS: 公开材料可核对；推断处标为设计点，不写成事实",
+  "budget": "PASS: 探针付费调用 ¥0；公开抓取与整理约 2h"
+ },
+ "one_person_ready": 10,
+ "internal_access_required": 0,
+ "copyable_items": [
+  "model-visible-equals-logged",
+  "everything-is-a-plugin + capability-seam",
+  "numbered-docs + attention-budget",
+  "ticket-state-machine + human-handoff",
+  "authorization-first + record-only",
+  "one-command-gate + breaking-change-note",
+  "publish-failed-attempts + falsifiable-claims",
+  "daily-one-component + production-tested + extract-standalone",
+  "protocol-conversion-layer + golden-snapshots",
+  "trace-as-deliverable + duckdb-object-store-pipeline"
+ ],
+ "hardware_bound_not_counted": [
+  "DeepEP",
+  "DeepGEMM",
+  "DualPipe",
+  "3FS",
+  "DeepInfer"
+ ],
+ "sources": [
+  "https://github.com/deepseek-ai/deepseek-harness",
+  "https://github.com/deepseek-ai/dsh-superagent-prototype",
+  "https://github.com/deepseek-ai/open-infra-index",
+  "https://arxiv.org/abs/2501.12948",
+  "https://arxiv.org/abs/2412.19437",
+  "https://github.com/deepseek-ai/deepseek-recipe",
+  "https://github.com/deepseek-ai/profile-data",
+  "https://github.com/deepseek-ai/smallpond",
+  "https://github.com/deepseek-ai/DeepEP"
+ ],
+ "unverified": [
+  "未逐条执行 DS 仓库代码；A 级指公开可复核，不等于本窗口已复现",
+  "未采用访谈类单源材料；组织流程类结论不写入本清单",
+  "落地工时、GPU/存储费用未计入探针 ¥10/3h 预算"
+ ],
+ "falsifiable": "若任一来源链接失效、公开仓库删除对应规范/代码，或 10 条中任一条被证明需要内部权限，则对应行降级/本回执作废",
+ "budget": {
+  "limit_cny": 10,
+  "spent_cny": 0,
+  "note": "仅公开网页与公开仓库，无付费 API；成本以官方余额对账为准"
+ },
+ "state_claim": null,
+ "state_note": "state.json 未由本窗口直写；建议 W0 验收后将 T7 置 PASS 并登记 artifact/sha",
+ "ts": "2026-11-21T00:00:00"
+}

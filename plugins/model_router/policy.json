@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "description": "会话+任务模型路由策略。改这里即可调档，不用改插件代码。",
+  "default_model": { "providerID": "deepseek", "modelID": "deepseek-flash" },
+  "local_model": { "providerID": "ollama", "modelID": "qwen2.5:3b-instruct-q4_K_M" },
+  "task_types": {
+    "code": {
+      "model": { "providerID": "deepseek", "modelID": "deepseek-flash" },
+      "heavy_model": { "providerID": "deepseek", "modelID": "deepseek-v4-pro" }
+    },
+    "research": {
+      "model": { "providerID": "deepseek", "modelID": "deepseek-flash" },
+      "heavy_model": { "providerID": "deepseek", "modelID": "deepseek-v4-pro" }
+    },
+    "doc": {
+      "model": { "providerID": "deepseek", "modelID": "deepseek-flash" }
+    },
+    "audit": {
+      "model": { "providerID": "deepseek", "modelID": "deepseek-v4-pro" }
+    }
+  },
+  "classify": {
+    "order": ["audit", "research", "doc", "code"],
+    "default": "code",
+    "keywords": {
+      "audit": ["审计", "审查", "核查", "验收", "合规", "漏洞", "安全评估", "风险评估", "质量检查", "对账", "audit", "review", "security", "vulnerability", "compliance", "verify", "validation"],
+      "research": ["调研", "研究", "搜索", "检索", "查资料", "竞品", "市场", "情报", "对比", "分析", "调查", "新闻", "趋势", "research", "investigate", "compare", "search", "market", "intel", "survey"],
+      "doc": ["文档", "说明", "总结", "报告", "教程", "手册", "翻译", "整理", "润色", "写作", "readme", "document", "summary", "report", "guide", "translate", "writeup"],
+      "code": ["代码", "实现", "修复", "重构", "报错", "函数", "脚本", "接口", "部署", "测试", "调试", "编译", "依赖", "bug", "fix", "refactor", "implement", "code", "script", "api", "deploy", "test", "debug", "build"]
+    }
+  },
+  "privacy": {
+    "keywords": ["离线", "本地模型", "隐私", "敏感", "机密", "绝密", "内部资料", "不要联网", "不联网", "断网", "不得外传", "offline", "confidential", "secret", "air-gapped", "local only", "local-only", "no network"]
+  },
+  "heavy": {
+    "chars_threshold": 1500,
+    "keywords": ["架构", "重构", "深度", "全面", "系统性", "根因", "多文件", "性能优化", "并发", "迁移", "从零", "端到端", "architecture", "refactor", "deep dive", "migration", "end-to-end", "multi-file"]
+  }
+}

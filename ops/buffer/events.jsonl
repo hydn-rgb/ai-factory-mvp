@@ -1,0 +1,1 @@
+{"ts": "2026-11-21T10:33:07", "level": "INFO", "node": "DSH_BUFFER", "event": "PROPOSAL_WRITTEN", "payload": {"proposal": "D:\\AI_Factory\\ops\\buffer\\proposals\\prop-20261121T103307745588.json", "target": "ops/bus/state.json", "actor": "W3"}}

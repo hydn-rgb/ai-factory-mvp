@@ -1,0 +1,109 @@
+{
+ "task_id": "T13",
+ "owner": "W13",
+ "status": "PASS",
+ "artifact": "..\\..\\ops\\context\\watch.py",
+ "sha": "5357328bffe1d215c3d2bb29f24d20024482943d81b655f8a53fb1b626b0d3a7",
+ "rows": 14,
+ "level": "L1",
+ "command": "python ops\\context\\watch.py --self-test",
+ "exit_code": 0,
+ "request": "读 ops\\bus\\tasks\\T13.md，做巡检与备份钩子，回执写 out\\T13.json",
+ "files": {
+  "ops/context/watch.py": "5357328bffe1d215c3d2bb29f24d20024482943d81b655f8a53fb1b626b0d3a7",
+  "ops/context/thresholds.json": "80a38bc3a7ad7cfab5a36404116706c63a808d09aacd17d84ed71f01fc91979a",
+  "ops/context/handoff.md": "7be0670920283abb3be3534f5185257cfa47e67e883f858ca630cf2f7c42b46a",
+  "ops/context/assets_sha.json": "9e08e6a7a039f843acfb413b7c373c6b570f880a3b464a4fb7bdfffcac7a4d6e",
+  "ops/context/snapshots/snap-20261121-122755/manifest.json": "6ef8a0e49d2bacc3b0d0a8e52b65a15eeaadebf0a8c893b0ffb702ebaa5667e5",
+  "ops/context/snapshots/snap-20261121-122758/manifest.json": "c0f3b923063df4c400571e9f7662990dd43727e5cf1063750613765911d89ebe"
+ },
+ "rows_meaning": "watch.py --self-test 的 14 项断言：扫描指标、未超限不触发、模拟超限触发、handoff 段落、资产 sha 清单、快照 manifest、快照校验、快照恢复、敏感文件排除、不删不改源资产、不生成压缩包、篡改可识别、缺 rows 计数、耗时低于 20s 软截止",
+ "acceptance": {
+  "simulate_threshold_once": "PASS：执行 python ops\\context\\watch.py --simulate，6 项指标全部越线，触发交接；模拟快照 ops/context/snapshots/snap-20261121-122755，归档 handoff 在 ops/context/handoffs/",
+  "handoff_exists": "PASS：ops/context/handoff.md 存在；同时每次触发写 handoffs/handoff-<时间>.md，不覆盖历史",
+  "snapshot_restorable": "PASS：--verify-snapshot 对 snap-20261121-122755 校验 101/101 通过；--restore 到 D:\\Temp\\opencode\\t13_restore_check2，恢复 101 个文件、0 错误、恢复后 sha 全部一致",
+  "non_blocking": "PASS：真实巡检扫描 0.031s、全流程 0.656s，软截止 20s；默认退出码 0，仅 --strict 才在超限时返回 2；不弹交互、不调用模型",
+  "no_delete_no_compress": "PASS：self-test 对比巡检前后源资产 sha 完全一致；仅新增 handoff/快照/清单；未生成 .zip/.gz/.7z/.rar/.tar 等压缩包；--restore 只写新目录，目标 sha 不同时默认拒绝覆盖",
+  "no_secret_access": "PASS：按文件名排除 .env / secret / password / vault / token / *.key 等；self-test 用 data/secrets.vault 与 .env 验证未被收集、未出现在 manifest/handoff；未读取任何密钥明文",
+  "asset_sha_manifest": "PASS：ops/context/assets_sha.json，102 项，只读扫描 .context、bus tasks/out/state、reports/cases、data 顶层 json/jsonl、AGENTS.md、constitution.json、watch.py"
+ },
+ "metrics": {
+  "context_bytes": 1788,
+  "data_bytes": 14902324,
+  "cases_files": 12,
+  "bus_todo": 9,
+  "session_tokens_est": 488,
+  "out_receipts_without_rows": 1,
+  "context_files": 1,
+  "data_files": 343,
+  "out_receipts": 9,
+  "session_launches": 82,
+  "usage_log_lines": 1,
+  "limits": {
+   "context_bytes": 262144,
+   "data_bytes": 33554432,
+   "cases_files": 200,
+   "bus_todo": 8,
+   "session_tokens_est": 200000,
+   "out_receipts_without_rows": 0
+  }
+ },
+ "real_trigger": {
+  "breaches": [
+   "bus_todo: 9 > 8",
+   "out_receipts_without_rows: 1 > 0"
+  ],
+  "handoff": "ops/context/handoff.md",
+  "snapshot": "ops/context/snapshots/snap-20261121-122758"
+ },
+ "hook": {
+  "entry": "python ops\\context\\watch.py --check",
+  "json_entry": "python ops\\context\\watch.py --check --json",
+  "strict_entry": "python ops\\context\\watch.py --check --strict",
+  "suggested_schedule": "每 6 小时一次；由用户/调度器自行注册，不擅自改系统计划任务",
+  "state_write": "不回写 ops/bus/state.json，避免跨窗口冲突"
+ },
+ "findings": [
+  {
+   "id": "BUS_TODO_OVER_THRESHOLD",
+   "detail": "总线未完成 9 个（T1/T2/T9/T11/T12/T13/T14/T15/T16）> 阈值 8，其中 T13 自身尚未被 W0 落账；这是真实超限，不是伪造。未替 W0 改状态。",
+   "level": "OPEN"
+  },
+  {
+   "id": "T9_RECEIPT_MISSING_ROWS",
+   "detail": "9 份正式回执中仅 T9.json 缺 rows，触发 out_receipts_without_rows=1；T11 任务卡就是修 T9 回执但尚未完成。未越权修改 T9/T11 产物。",
+   "level": "OPEN"
+  },
+  {
+   "id": "EVIDENCE_JSON_FILTERED",
+   "detail": "首版把 T12-evidence.json / T12-test-*.json 误当正式回执，导致缺 rows 虚高为 6；已改为只匹配 ^T\\d+\\.json$，并重跑 self-test 与巡检。",
+   "level": "FIXED"
+  },
+  {
+   "id": "DATA_NEAR_HALF_OF_LIMIT",
+   "detail": "data 14.9 MB / 33.5 MB，尚未超限；其中 open_source_cache.json 等大文件只记 sha 不复制，避免快照膨胀。",
+   "level": "INFO"
+  },
+  {
+   "id": "CHECK_HANDOFF_GLOBAL_FAILS_OTHER_WINDOWS",
+   "detail": "python ops\\bus\\check_handoff.py 全量退出 1，原因在别的窗口产物：T12-evidence.json 缺 owner/status/artifact/sha，T12-test-*.json 为 UTF-16 导致解析失败，T12.json 的 sha 与当前产物不符。T13 自身 audit --task T13 返回 ACCEPT；未越权改 T12 文件。",
+   "level": "OPEN"
+  }
+ ],
+ "unverified": [
+  "连续跑 7 天并出记录尚未执行；任务卡下一步要求 7 天日志，本次只完成单次巡检/模拟/恢复演练",
+  "未注册 Windows 计划任务：只提供 --check 钩子入口与建议频率，改系统调度需用户确认",
+  "token 用量为本地 usage 账本 + 上下文字节估算，未接入 OpenCode 真实会话计费",
+  "快照对 >1 MiB 文件只记 sha 不复制；大文件可校验但不可从快照逐字节恢复",
+  "恢复只演练到新目录，未在真实业务目录上做覆盖恢复（按设计禁止自动覆盖）"
+ ],
+ "falsifiable": "若 python ops\\context\\watch.py --self-test 少于 14/14、handoff.md 不存在、snapshot --verify-snapshot 失败、恢复后 sha 不一致、或巡检删除了任一源资产/读取了密钥，则本回执作废。",
+ "budget": {
+  "limit_cny": 5,
+  "spent_cny": null,
+  "note": "无付费外部调用；仅本地只读扫描与本地文件复制。成本以官方余额对账为准，不估价"
+ },
+ "verified_by": "python ops\\context\\watch.py --self-test && python ops\\bus\\audit.py --task T13 --json",
+ "state_claim": null,
+ "ts": "2026-11-21T12:28:10+08:00"
+}

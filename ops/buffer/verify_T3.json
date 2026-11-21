@@ -1,0 +1,145 @@
+{
+  "verdict": "ACCEPT",
+  "reasons": [],
+  "checks": [
+    {
+      "check": "field:task_id",
+      "ok": true,
+      "detail": "'T3'"
+    },
+    {
+      "check": "field:owner",
+      "ok": true,
+      "detail": "'W3'"
+    },
+    {
+      "check": "field:status",
+      "ok": true,
+      "detail": "'PASS'"
+    },
+    {
+      "check": "field:artifact",
+      "ok": true,
+      "detail": "'D:\\\\AI_Factory\\\\ops\\\\buffer\\\\dsh_buffer.py'"
+    },
+    {
+      "check": "field:sha",
+      "ok": true,
+      "detail": "'d3916e03f542c4b3b6918fd57e1723a01e5be6fb6056168befc58d0769debec9'"
+    },
+    {
+      "check": "field:rows",
+      "ok": true,
+      "detail": "21"
+    },
+    {
+      "check": "status:allowed",
+      "ok": true,
+      "detail": "PASS"
+    },
+    {
+      "check": "card:task_id",
+      "ok": true,
+      "detail": "card=T3"
+    },
+    {
+      "check": "card:owner",
+      "ok": true,
+      "detail": "card=执行窗口 W3"
+    },
+    {
+      "check": "state:owner_unique",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "state:entry",
+      "ok": true,
+      "detail": "state.json 无 T3"
+    },
+    {
+      "check": "state:owner_match",
+      "ok": true,
+      "detail": "state=W3 receipt=W3"
+    },
+    {
+      "check": "artifact:exists",
+      "ok": true,
+      "detail": "D:\\AI_Factory\\ops\\buffer\\dsh_buffer.py"
+    },
+    {
+      "check": "artifact:is_file",
+      "ok": true,
+      "detail": "D:\\AI_Factory\\ops\\buffer\\dsh_buffer.py"
+    },
+    {
+      "check": "sha:full_match",
+      "ok": true,
+      "detail": "d3916e03f542c4b3b6918fd57e1723a01e5be6fb6056168befc58d0769debec9"
+    },
+    {
+      "check": "report:exists",
+      "ok": true,
+      "detail": "D:\\AI_Factory\\ops\\buffer\\REPORT_T3.md"
+    },
+    {
+      "check": "report:sha_match",
+      "ok": true,
+      "detail": "56a32be26977292975f8f3dc2a2837070d914fb6c0e2547d7d5702a7138def48"
+    },
+    {
+      "check": "claim:level",
+      "ok": true,
+      "detail": "L1"
+    },
+    {
+      "check": "claim:command",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "claim:exit_code",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "check": "claim:evidence",
+      "ok": true,
+      "detail": "D:\\AI_Factory\\ops\\buffer\\REPORT_T3.md"
+    },
+    {
+      "check": "claim:request",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "claim:self_test",
+      "ok": true,
+      "detail": "21/21"
+    }
+  ],
+  "artifact_sha": "d3916e03f542c4b3b6918fd57e1723a01e5be6fb6056168befc58d0769debec9",
+  "rejected": 0,
+  "checked": 23,
+  "task_id": "T3",
+  "card_path": "D:\\AI_Factory\\ops\\bus\\tasks\\T3.md",
+  "card": {
+    "lines": 21,
+    "max_lines": 20,
+    "sha": "a9d29e28043e13b575e095031e97e70153a7533023eddcdf950315a296ece475",
+    "ok": false,
+    "reasons": [
+      "CARD_TOO_LONG:21>20"
+    ]
+  },
+  "state_path": "D:\\AI_Factory\\ops\\bus\\state.json",
+  "state_error": "",
+  "state_entry": {
+    "owner": "W3",
+    "status": "todo",
+    "artifact": "",
+    "sha": ""
+  },
+  "receipt_path": "D:\\AI_Factory\\ops\\bus\\out\\T3.json",
+  "verified_at": "2026-11-21T10:33:13"
+}

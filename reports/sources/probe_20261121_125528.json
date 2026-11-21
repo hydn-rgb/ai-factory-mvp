@@ -1,0 +1,752 @@
+{
+ "generated_at": "2026-11-21T12:55:28",
+ "method": "Admiralty A-F x 1-6 + freshness + corroboration + actionability",
+ "rows": [
+  {
+   "src": {
+    "id": "pccz",
+    "name": "全国企业破产重整案件信息网",
+    "url": "https://pccz.court.gov.cn/",
+    "layer": "法院官方",
+    "reliability": "A",
+    "credibility": 1,
+    "independent": 3,
+    "actionability": 0.9,
+    "half_life_days": 7,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "受理/债权申报/债权人会议/裁定，第一手"
+   },
+   "probe": {
+    "ok": true,
+    "status": 200,
+    "final_url": "https://pccz.court.gov.cn/pcajxxw/index/xxwsy",
+    "content_type": "text/html;charset=UTF-8",
+    "bytes": 131072,
+    "sha256": "4ee5c29a88ff51e4faabc2f0674396ec492549b52490c31a13cb3507c23c334c",
+    "elapsed_ms": 1140,
+    "error": null
+   },
+   "score": {
+    "total": 99.0,
+    "potential": 99.0,
+    "tier": "P1",
+    "grade": "A",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 1.0,
+     "freshness": 1.0,
+     "corroboration": 1.0,
+     "actionability": 0.9
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "cninfo",
+    "name": "巨潮资讯（上市公司公告）",
+    "url": "http://www.cninfo.com.cn/new/index",
+    "layer": "交易所指定披露",
+    "reliability": "A",
+    "credibility": 1,
+    "independent": 3,
+    "actionability": 0.9,
+    "half_life_days": 7,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "重整计划/执行完毕公告原文 PDF"
+   },
+   "probe": {
+    "ok": true,
+    "status": 206,
+    "final_url": "http://www.cninfo.com.cn/new/index",
+    "content_type": "text/html;charset=utf-8",
+    "bytes": 108642,
+    "sha256": "0d76cbeae707a45c2f4548dfaec12a07bbd749ad35bb523be25e60d495c44e86",
+    "elapsed_ms": 256,
+    "error": null
+   },
+   "score": {
+    "total": 99.0,
+    "potential": 99.0,
+    "tier": "P1",
+    "grade": "A",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 1.0,
+     "freshness": 1.0,
+     "corroboration": 1.0,
+     "actionability": 0.9
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "sse",
+    "name": "上海证券交易所",
+    "url": "https://www.sse.com.cn/",
+    "layer": "交易所官方",
+    "reliability": "A",
+    "credibility": 1,
+    "independent": 3,
+    "actionability": 0.85,
+    "half_life_days": 7,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "沪市公司监管问询/风险警示"
+   },
+   "probe": {
+    "ok": true,
+    "status": 200,
+    "final_url": "https://www.sse.com.cn/",
+    "content_type": "text/html",
+    "bytes": 64565,
+    "sha256": "a309fb7e51f4887ca2685210c2c82a72bce1d99d8312a118e3aee706d8fd1e6f",
+    "elapsed_ms": 167,
+    "error": null
+   },
+   "score": {
+    "total": 98.5,
+    "potential": 98.5,
+    "tier": "P1",
+    "grade": "A",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 1.0,
+     "freshness": 1.0,
+     "corroboration": 1.0,
+     "actionability": 0.85
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "szse",
+    "name": "深圳证券交易所",
+    "url": "https://www.szse.cn/",
+    "layer": "交易所官方",
+    "reliability": "A",
+    "credibility": 1,
+    "independent": 3,
+    "actionability": 0.85,
+    "half_life_days": 7,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "深市公告/纪律处分"
+   },
+   "probe": {
+    "ok": true,
+    "status": 206,
+    "final_url": "https://www.szse.cn/index/index.html",
+    "content_type": "text/html",
+    "bytes": 88309,
+    "sha256": "2da48923383fe4970cc559fca0da00c9bf941a44ae39966a31ec2b008b5cf7cb",
+    "elapsed_ms": 528,
+    "error": null
+   },
+   "score": {
+    "total": 98.5,
+    "potential": 98.5,
+    "tier": "P1",
+    "grade": "A",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 1.0,
+     "freshness": 1.0,
+     "corroboration": 1.0,
+     "actionability": 0.85
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "hkexnews",
+    "name": "港交所披露易",
+    "url": "https://www.hkexnews.hk/index_c.htm",
+    "layer": "交易所官方",
+    "reliability": "A",
+    "credibility": 1,
+    "independent": 3,
+    "actionability": 0.85,
+    "half_life_days": 7,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "清盘呈请/委任清盘人公告"
+   },
+   "probe": {
+    "ok": true,
+    "status": 206,
+    "final_url": "https://www.hkexnews.hk/index_c.htm",
+    "content_type": "text/html",
+    "bytes": 8993,
+    "sha256": "b9e3271183ffbc96d904e13f25f590ef887e7a789fbccdcd4feaa41800e4854e",
+    "elapsed_ms": 2267,
+    "error": null
+   },
+   "score": {
+    "total": 98.5,
+    "potential": 98.5,
+    "tier": "P1",
+    "grade": "A",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 1.0,
+     "freshness": 1.0,
+     "corroboration": 1.0,
+     "actionability": 0.85
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "rmfygg",
+    "name": "人民法院公告网",
+    "url": "https://rmfygg.court.gov.cn/",
+    "layer": "法院官方",
+    "reliability": "A",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.8,
+    "half_life_days": 14,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "破产/清算/拍卖公告，需按法院筛"
+   },
+   "probe": {
+    "ok": true,
+    "status": 206,
+    "final_url": "https://rmfygg.court.gov.cn/",
+    "content_type": "text/html;charset=UTF-8",
+    "bytes": 40019,
+    "sha256": "cd19887947c8808531b6fa028d4eeb923104cc7c0d3f6c550a637acab9c351cd",
+    "elapsed_ms": 101,
+    "error": null
+   },
+   "score": {
+    "total": 88.0,
+    "potential": 88.0,
+    "tier": "P1",
+    "grade": "A",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.8
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "wenshu",
+    "name": "中国裁判文书网",
+    "url": "https://wenshu.court.gov.cn/",
+    "layer": "法院官方",
+    "reliability": "B",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.7,
+    "half_life_days": 30,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "裁定书全文；常有反爬/登录，抓不到不算失败"
+   },
+   "probe": {
+    "ok": true,
+    "status": 206,
+    "final_url": "https://wenshu.court.gov.cn/",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 22309,
+    "sha256": "5fea658f6607d8e025cef527a0d5bc5c05f2fe9d38b7c317846186ca0c4f11d9",
+    "elapsed_ms": 227,
+    "error": null
+   },
+   "score": {
+    "total": 80.0,
+    "potential": 80.0,
+    "tier": "P1",
+    "grade": "B",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 0.8,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.7
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "gsxt",
+    "name": "国家企业信用信息公示系统",
+    "url": "https://www.gsxt.gov.cn/index.html",
+    "layer": "市场监管官方",
+    "reliability": "A",
+    "credibility": 1,
+    "independent": 3,
+    "actionability": 0.7,
+    "half_life_days": 30,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "股权/异常/清算组备案；有验证码，只人工查"
+   },
+   "probe": {
+    "ok": false,
+    "status": 521,
+    "final_url": "https://www.gsxt.gov.cn/index.html",
+    "content_type": "",
+    "bytes": 893,
+    "sha256": "d99839d545daeef3670ed3d57d3966fdffefffe5b0ee7f84fb91bea66821de71",
+    "elapsed_ms": 105,
+    "error": "HTTP 521"
+   },
+   "score": {
+    "total": 0.0,
+    "potential": 97.0,
+    "tier": "P1",
+    "grade": "UNVERIFIED",
+    "eligible": false,
+    "gates": [
+     "探测失败：不可达/被拦"
+    ],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 1.0,
+     "freshness": 1.0,
+     "corroboration": 1.0,
+     "actionability": 0.7
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "creditchina",
+    "name": "信用中国",
+    "url": "https://www.creditchina.gov.cn/",
+    "layer": "政府官方",
+    "reliability": "A",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.6,
+    "half_life_days": 30,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "失信/被执行/行政处罚，辅助排除"
+   },
+   "probe": {
+    "ok": false,
+    "status": 412,
+    "final_url": "https://www.creditchina.gov.cn/",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 2542,
+    "sha256": "44d24fd837741bf99a916dfa24e9e6b3f0bc1789f89536a66ec770059c5e85e5",
+    "elapsed_ms": 157,
+    "error": "HTTP 412"
+   },
+   "score": {
+    "total": 0.0,
+    "potential": 86.0,
+    "tier": "P1",
+    "grade": "UNVERIFIED",
+    "eligible": false,
+    "gates": [
+     "探测失败：不可达/被拦"
+    ],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.6
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "csrc",
+    "name": "中国证监会",
+    "url": "http://www.csrc.gov.cn/",
+    "layer": "监管官方",
+    "reliability": "A",
+    "credibility": 1,
+    "independent": 3,
+    "actionability": 0.7,
+    "half_life_days": 14,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "立案/处罚/退市决定"
+   },
+   "probe": {
+    "ok": true,
+    "status": 206,
+    "final_url": "https://www.csrc.gov.cn/",
+    "content_type": "text/html",
+    "bytes": 131072,
+    "sha256": "9873602b50248256fdfcc1b577b9e73d7bf32b2ee14a19bfcf40084a45f53863",
+    "elapsed_ms": 225,
+    "error": null
+   },
+   "score": {
+    "total": 97.0,
+    "potential": 97.0,
+    "tier": "P1",
+    "grade": "A",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 1.0,
+     "freshness": 1.0,
+     "corroboration": 1.0,
+     "actionability": 0.7
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "sf-taobao",
+    "name": "阿里资产·司法拍卖",
+    "url": "https://sf.taobao.com/",
+    "layer": "司法拍卖平台",
+    "reliability": "B",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.9,
+    "half_life_days": 3,
+    "legal": "public_readonly",
+    "last_verified": "2026-11-21",
+    "note": "股权/土地/设备标的与流拍次数"
+   },
+   "probe": {
+    "ok": true,
+    "status": 200,
+    "final_url": "https://sf.taobao.com/",
+    "content_type": "text/html;charset=GBK",
+    "bytes": 131072,
+    "sha256": "75b8d55b9f58fd826beab0ba6d88f697588b67ddd2db0e7cb283d5c0b39ccb25",
+    "elapsed_ms": 487,
+    "error": null
+   },
+   "score": {
+    "total": 82.0,
+    "potential": 82.0,
+    "tier": "P1",
+    "grade": "B",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 0.8,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.9
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "jd-auction",
+    "name": "京东拍卖·司法",
+    "url": "https://auction.jd.com/sifa_list.html",
+    "layer": "司法拍卖平台",
+    "reliability": "B",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.9,
+    "half_life_days": 3,
+    "legal": "public_readonly",
+    "last_verified": "2026-11-21",
+    "note": "与淘宝互为交叉验证"
+   },
+   "probe": {
+    "ok": true,
+    "status": 200,
+    "final_url": "https://pmsearch.jd.com/?publishSource=7",
+    "content_type": "text/html",
+    "bytes": 4019,
+    "sha256": "8afa22ac30a01c934a6ccb5738d015b1e620d9755f2fa295bb61c8382c4a7b6c",
+    "elapsed_ms": 433,
+    "error": null
+   },
+   "score": {
+    "total": 82.0,
+    "potential": 82.0,
+    "tier": "P1",
+    "grade": "B",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 0.8,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.9
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "cbex",
+    "name": "北京产权交易所",
+    "url": "https://www.cbex.com.cn/",
+    "layer": "产权交易所",
+    "reliability": "A",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.8,
+    "half_life_days": 7,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "国资产权/债权转让挂牌"
+   },
+   "probe": {
+    "ok": false,
+    "status": 521,
+    "final_url": "https://www.cbex.com.cn/",
+    "content_type": "",
+    "bytes": 827,
+    "sha256": "ef91f66a86e0ff09349ab7ce658c77412c3b09d276044a9c9adf95abd9ccf9da",
+    "elapsed_ms": 121,
+    "error": "HTTP 521"
+   },
+   "score": {
+    "total": 0.0,
+    "potential": 88.0,
+    "tier": "P1",
+    "grade": "UNVERIFIED",
+    "eligible": false,
+    "gates": [
+     "探测失败：不可达/被拦"
+    ],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.8
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "suaee",
+    "name": "上海联合产权交易所",
+    "url": "https://www.suaee.com/",
+    "layer": "产权交易所",
+    "reliability": "A",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.8,
+    "half_life_days": 7,
+    "legal": "public",
+    "last_verified": "2026-11-21",
+    "note": "长三角资产/股权挂牌"
+   },
+   "probe": {
+    "ok": true,
+    "status": 206,
+    "final_url": "https://www.suaee.com/",
+    "content_type": "text/html",
+    "bytes": 4061,
+    "sha256": "98e7fc9adb006dbe23fdef91e53493991d3d0c9366762cb7bc2c63633fcd1efe",
+    "elapsed_ms": 266,
+    "error": null
+   },
+   "score": {
+    "total": 88.0,
+    "potential": 88.0,
+    "tier": "P1",
+    "grade": "A",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 1.0,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.8
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "caixin",
+    "name": "财新网",
+    "url": "https://www.caixin.com/",
+    "layer": "财经媒体",
+    "reliability": "B",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.7,
+    "half_life_days": 7,
+    "legal": "paywall",
+    "last_verified": "2026-11-21",
+    "note": "深度但付费墙；只作线索，不作证据"
+   },
+   "probe": {
+    "ok": true,
+    "status": 200,
+    "final_url": "https://www.caixin.com/",
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 98078,
+    "sha256": "4bcd1ab99056db5ddd60cfd05973561ae18fc9a4f75291befa8cb646c49ecc41",
+    "elapsed_ms": 71,
+    "error": null
+   },
+   "score": {
+    "total": 0.0,
+    "potential": 80.0,
+    "tier": "P1",
+    "grade": "UNVERIFIED",
+    "eligible": false,
+    "gates": [
+     "未授权/非公开：不作证据"
+    ],
+    "parts": {
+     "reliability": 0.8,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.7
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "yicai",
+    "name": "第一财经",
+    "url": "https://www.yicai.com/",
+    "layer": "财经媒体",
+    "reliability": "B",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.7,
+    "half_life_days": 7,
+    "legal": "public_readonly",
+    "last_verified": "2026-11-21",
+    "note": "时间线/交割细节，需回查公告"
+   },
+   "probe": {
+    "ok": true,
+    "status": 206,
+    "final_url": "https://www.yicai.com/",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 131072,
+    "sha256": "a986cdf19b3b39f35631e5e9de09f237f6a04f89e586ee2f287429a346c6ee70",
+    "elapsed_ms": 191,
+    "error": null
+   },
+   "score": {
+    "total": 80.0,
+    "potential": 80.0,
+    "tier": "P1",
+    "grade": "B",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 0.8,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.7
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "stcn",
+    "name": "证券时报",
+    "url": "https://www.stcn.com/",
+    "layer": "财经媒体",
+    "reliability": "B",
+    "credibility": 3,
+    "independent": 2,
+    "actionability": 0.6,
+    "half_life_days": 7,
+    "legal": "public_readonly",
+    "last_verified": "2026-11-21",
+    "note": "快讯多，需原文交叉"
+   },
+   "probe": {
+    "ok": true,
+    "status": 200,
+    "final_url": "https://www.stcn.com/",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 131072,
+    "sha256": "b6d47530ff027f2f1ae3f33cb81ee96edc51ac9c8b8977228e42ad4461e4b092",
+    "elapsed_ms": 927,
+    "error": null
+   },
+   "score": {
+    "total": 74.0,
+    "potential": 74.0,
+    "tier": "P2",
+    "grade": "B",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 0.8,
+     "credibility": 0.6,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.6
+    }
+   }
+  },
+  {
+   "src": {
+    "id": "cnstock",
+    "name": "上海证券报（电子报）",
+    "url": "https://paper.cnstock.com/",
+    "layer": "指定披露媒体",
+    "reliability": "B",
+    "credibility": 2,
+    "independent": 2,
+    "actionability": 0.65,
+    "half_life_days": 7,
+    "legal": "public_readonly",
+    "last_verified": "2026-11-21",
+    "note": "公告转载，可作公告的镜像索引"
+   },
+   "probe": {
+    "ok": true,
+    "status": 200,
+    "final_url": "https://paper.cnstock.com/",
+    "content_type": "text/html;charset=UTF-8",
+    "bytes": 131072,
+    "sha256": "7e52218156306b6672616d84b06767ca8f268389ac792e37c96dc5ae22953d81",
+    "elapsed_ms": 227,
+    "error": null
+   },
+   "score": {
+    "total": 79.5,
+    "potential": 79.5,
+    "tier": "P1",
+    "grade": "B",
+    "eligible": true,
+    "gates": [],
+    "parts": {
+     "reliability": 0.8,
+     "credibility": 0.8,
+     "freshness": 1.0,
+     "corroboration": 0.67,
+     "actionability": 0.65
+    }
+   }
+  }
+ ]
+}

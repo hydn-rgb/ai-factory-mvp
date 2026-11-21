@@ -1,0 +1,251 @@
+{
+ "task_id": "T15",
+ "owner": "W15",
+ "status": "UNVERIFIED",
+ "artifact": "..\\..\\ops\\probe\\T15_lawyer_process_probe.md",
+ "sha": "51e16adc40271186bf3bf2f1ecf53639077cdd55288655ed9b4c1c8b8753c484",
+ "sha16": "51e16adc40271186",
+ "rows": 9,
+ "rows_definition": "5 个获客渠道 + 3 个实习生任务 + 1 个可替代环节 = 9 条带来源证据行；不含真实访谈记录（0/1）",
+ "artifact_kind": "律师流程探针（公开资料桌面研究）+ 获客路径图 + 实习生 SOP + 可替代环节边界",
+ "request": "读 ops\\bus\\tasks\\T15.md，做律师流程探针，回执写 out\\T15.json",
+ "scope": "只读公开网页：律协规则、司法行政机关公告、政府采购公告、律所公开文章、律所招聘页、法院公开指引；未访谈律所、未联系客户、未接触案件材料",
+ "target_hypothesis": "律师获客的核心不是流量，而是可核验的信任：强关系转介绍、圈层背书、可对照的类案、可验收的交付；实习生可承接‘对照/初筛/归档’三类可复核工作，其中类案检索的初筛与字段化对照表最适合被工具替代。该句是待访谈验证的假设，不是行业结论",
+ "method": {
+  "firm_interviews_planned": 1,
+  "firm_interviews_done": 0,
+  "intern_observations_planned": 1,
+  "intern_observations_done": 0,
+  "acquisition_channels_documented": 5,
+  "intern_tasks_documented": 3,
+  "substitutable_steps_documented": 1,
+  "interview_script_included": true
+ },
+ "acceptance": {
+  "5_acquisition_channels": "PASS 5/5：C1 熟人/老客户复购与转介绍；C2 专业内容/自媒体/朋友圈；C3 行业圈层/商会/校友会/免费讲座；C4 招投标/政府采购/常年法律顾问；C5 公益普法/法律援助/企业法治体检",
+  "3_intern_tasks": "PASS 3/3：T1 类案检索与对照表；T2 合同/法律文件初筛；T3 证据目录/卷宗核对与归档",
+  "1_substitutable_step": "PASS 1/1：R1 类案检索的初筛 + 字段化对照表（不含法律判断）",
+  "every_row_has_source": "PASS 9/9：见 artifact 第二、四、五节与第七节来源清单",
+  "no_impersonation": "PASS：未以律师/律所/客户身份联系任何人；全文限定为公开页面自述",
+  "no_client_secrets": "PASS：未联系客户；SOP 明确脱敏、授权、最小必要原则",
+  "no_legal_advice_promise": "PASS：所有实习生输出标注‘待主办律师复核，不构成法律意见’",
+  "real_process_interview": "NOT DONE 0/1：本窗口无授权访谈对象，未伪造访谈记录",
+  "budget": "PASS：实际支出 ¥0 / 上限 ¥10；公开资料整理约 2.5h / 3h"
+ },
+ "channels": [
+  {
+   "id": "C1",
+   "name": "熟人 + 老客户复购/转介绍",
+   "recommender": "老客户、亲友、前同事、同行律师",
+   "trust_content": "过去交付结果、口碑、可核类案经验、透明报价",
+   "action": "结案 7 天内复盘；3 个月回访；请客户在具体场景中引荐，不做泛泛介绍",
+   "cost_cycle": "现金成本低；6–12 个月",
+   "compliance": "不得支付案件介绍费/律师费分成；未经客户许可不得发布客户信息",
+   "source": "https://sunhold.com.cn/Cn/Index/pageView/catid/26/id/622.html",
+   "extra_sources": [
+    "http://www.lvzhouls.com/Mobile/news/content/id/851.html",
+    "https://www.shanghaiinvest.com/cn/viewfile.php?id=12615",
+    "http://www.kunlanlaw.com/1904.html"
+   ],
+   "evidence_level": "B",
+   "qualified": true
+  },
+  {
+   "id": "C2",
+   "name": "专业内容 / 自媒体 / 朋友圈",
+   "recommender": "算法与弱关系、同行转发；不是推荐人，是‘被看见’",
+   "trust_content": "脱敏办案记录、类案解读、新规拆解、可执行清单",
+   "action": "锁定 1 个细分领域；每周 ≥2 条，持续 6 个月；朋友圈 70% 专业 + 20% 生活 + 10% 互动",
+   "cost_cycle": "现金 ¥0；见效 6 个月起",
+   "compliance": "不得承诺结果、宣示胜诉率、自称专家；公众号/网站需亮明姓名、执业证号、所名",
+   "source": "https://www.tiantonglaw.com/Content/2024/10-31/1048212065.html",
+   "extra_sources": [
+    "http://www.kunlanlaw.com/1904.html",
+    "https://www.shanghaiinvest.com/cn/viewfile.php?id=12615"
+   ],
+   "evidence_level": "B",
+   "qualified": true
+  },
+  {
+   "id": "C3",
+   "name": "行业圈层 / 商会 / 校友会 / 免费讲座",
+   "recommender": "校友、商会/行业协会熟人、讲座主办方",
+   "trust_content": "免费讲座、法律咨询、行业风险清单；用一次具体帮助换信任",
+   "action": "选 1 个目标行业；进入 1 个商会/校友会；每季度 1 次免费讲座或闭门会；会后 24h 发一页风险清单",
+   "cost_cycle": "场地/差旅；3–6 个月",
+   "compliance": "不得在非履职活动中使用律协职务；不得暗示与机关有特殊关系；不得支付回扣/介绍费",
+   "source": "http://www.kunlanlaw.com/1904.html",
+   "extra_sources": [
+    "https://sunhold.com.cn/Cn/Index/pageView/catid/26/id/622.html",
+    "https://www.shanghaiinvest.com/cn/viewfile.php?id=12615"
+   ],
+   "evidence_level": "B",
+   "qualified": true
+  },
+  {
+   "id": "C4",
+   "name": "招投标 / 政府采购 / 常年法律顾问",
+   "recommender": "采购方评审；机构信任，不是个人推荐",
+   "trust_content": "律所执业许可证、团队履历、同类业绩合同、服务方案、报价",
+   "action": "盯政府采购/公共资源交易平台；常备资质包 + 同类业绩 + 服务方案；逐条对照资格条款",
+   "cost_cycle": "标书 3–10 人日；1–3 个月；示例预算 23.7 万元/年",
+   "compliance": "不得串标/围标、虚假业绩；参与招标比选参照业务推广规则",
+   "source": "https://jr.sz.gov.cn/sjrb/xxgk/zjxx/zfcg/content/post_12305348.html",
+   "extra_sources": [
+    "https://www.shanghaiinvest.com/cn/viewfile.php?id=12615",
+    "http://www.lvxunlaw.com/"
+   ],
+   "evidence_level": "A",
+   "qualified": true
+  },
+  {
+   "id": "C5",
+   "name": "公益普法 / 法律援助 / 企业法治体检",
+   "recommender": "社区、学校、司法所、公益组织、受助人；机构型信任",
+   "trust_content": "免费普法课、法律援助、企业法治体检、公益记录",
+   "action": "与司法所/社区/学校/商会合作，每季度 1 场；课后只留一页纸清单，不硬推案源；记录服务时长",
+   "cost_cycle": "¥0–少量物料；6–12 个月；直接转化弱、品牌信任强",
+   "compliance": "法律援助除外可减免收费；不得把不收费/减收费作为业务推广手段；不得冒充律师、不得承诺结果",
+   "source": "https://sfj.sh.gov.cn/2020jcgk_gfxwj/20220314/59afbffe91f7471180007573ccf9583f.html",
+   "extra_sources": [
+    "https://www.lifanglaw.com/cn/cnshzr/",
+    "https://www.zhirenlawyer.com/zrjz-5.html",
+    "https://www.shanghaiinvest.com/cn/viewfile.php?id=12615"
+   ],
+   "evidence_level": "A",
+   "qualified": true
+  }
+ ],
+ "intern_tasks": [
+  {
+   "id": "T1",
+   "name": "类案检索与对照表",
+   "input": "脱敏起诉状/答辩状/合同/争议焦点 + 3–5 个关键词",
+   "steps": "提取主体/法律关系/争议焦点/诉请；按指导性案例→典型案例→本省高院→上级/本院顺位检索；近 3 年优先；去重；做对照表；写检索日志",
+   "output": "1 页对照表 + 1 页检索日志 + 3–5 个精读案例",
+   "fields": "案号、法院、裁判日期、案由、争议焦点、裁判要点、相同点、不同点、可用性、原文页码",
+   "timebox": "48h；10–15 个候选，精读 3–5 个",
+   "escalation": "找不到类案；类案裁判冲突；新类型/涉外/刑事；涉及客户机密边界",
+   "forbidden": "编造案号；直接引用 AI 输出；不同案由硬套；对客户说‘肯定能赢’",
+   "source": "https://www.court.gov.cn/fabu/xiangqing/243981.html",
+   "extra_sources": [
+    "https://www.court.gov.cn/zixun/xiangqing/426222.html",
+    "https://www.yuntinglaw.com/jobopp/237"
+   ],
+   "evidence_level": "A",
+   "qualified": true
+  },
+  {
+   "id": "T2",
+   "name": "合同/法律文件初筛",
+   "input": "合同/协议/律师函/法律意见书草稿 + 必要业务背景",
+   "steps": "主体/签署/授权；金额/支付/发票；期限/交付/验收；违约/解除/赔偿；管辖/争议解决；保密/知识产权/数据；与客户陈述不一致处；红黄绿灯标注",
+   "output": "风险点清单：条款号 + 原文 + 风险等级 + 要问律师的问题 + 要客户补的材料",
+   "fields": "条款号、原文、风险等级、问题、待补材料、原文页码",
+   "timebox": "24–48h；只做初筛，不写最终意见",
+   "escalation": "红点；重大金额；涉外；刑事；数据合规；交易结构变化",
+   "forbidden": "不出具法律意见；不替客户决策；不改交易结构；不承诺‘可以签’",
+   "source": "https://www.yuntinglaw.com/jobopp/237",
+   "extra_sources": [
+    "https://law.hnu.edu.cn/info/1221/17774.htm",
+    "https://www.shanghaiinvest.com/cn/viewfile.php?id=12615"
+   ],
+   "evidence_level": "B",
+   "qualified": true
+  },
+  {
+   "id": "T3",
+   "name": "证据目录/卷宗核对与归档",
+   "input": "证据原件/复印件/扫描件、证据目录、卷宗",
+   "steps": "目录 vs 实物逐项核对；查缺页/重页/倒页/模糊/日期矛盾/签章；标原件/复印件；按法院/仲裁要求排序装订；扫描命名归档；建待补材料清单",
+   "output": "核对表 + 缺失清单（责任人/截止日）+ 归档目录",
+   "fields": "证据序号、名称、形式、来源、页数、页码、拟证明事实",
+   "timebox": "收案后 24h 初核；举证前 48h 复核",
+   "escalation": "原件缺失；证据矛盾；超举证期限；客户无法补材料",
+   "forbidden": "不接触超出授权的客户机密；不擅自补造/修改证据；不对外发送",
+   "source": "https://www.acla.org.cn/info/c8e2a90999394156a9bf57a459e74299",
+   "extra_sources": [
+    "https://www.lawyers.org.cn/info/910e1e1039d34e35bb7ee5b7e1c84583",
+    "https://www.yuntinglaw.com/jobopp/237"
+   ],
+   "evidence_level": "A",
+   "qualified": true
+  }
+ ],
+ "substitutable": [
+  {
+   "id": "R1",
+   "step": "类案检索的‘初筛 + 字段化对照表’（不含法律判断）",
+   "current_owner_time": "实习生 2–3h/案；媒体口径 3 小时→2 分钟",
+   "replace_with": "脚本/AI 做关键词扩展、批量检索、去重、抽取案号/法院/日期/裁判要点、生成对照表初稿；实习生只做对照与回源",
+   "human_keeps": "选案、相似性判断、裁判要点提炼、冲突处理、每个案号回源核验、对客户解释",
+   "acceptance": "20 个案号 100% 可在案例库/裁判文书网复核；字段齐全；主办律师修改量 <30%；零编造案号/法条",
+   "risk": "AI 编造案号/法条；客户数据泄露；把参考案例说成必胜",
+   "source": "https://www.cqnews.net/1/detail/1341451947157352448/web/content_1341451947157352448.html",
+   "extra_sources": [
+    "https://www.moj.gov.cn/pub/sfbgw/zwgkztzl/xxxcgcxjpfzsx/fzsxllqy/202505/t20250515_519401.html",
+    "https://www.court.gov.cn/fabu/xiangqing/243981.html",
+    "https://www.yuntinglaw.com/jobopp/237"
+   ],
+   "evidence_level": "B",
+   "qualified": true
+  }
+ ],
+ "interview_plan": {
+  "targets": "1 家 10–50 人律所的合伙人（案源） + 1 名在岗实习生（承接）",
+  "duration_min": 40,
+  "questions": 10,
+  "record_template": "所规模/业务/所在地；近 12 个月案源渠道占比；最近 3 个客户的推荐人与原话；首次见面信任材料；实习生任务/耗时/复核人；类案检索现状/错误案例；合同初筛现状/红点规则；证据归档现状/常见错误；AI 使用与禁区；可替代环节与验收口径；受访人/日期/授权范围",
+  "pass_condition": "拿到 1 家所的‘渠道占比 + 3 个实习生任务耗时 + 1 个可替代环节实际错误率’后，才把 T15 从 UNVERIFIED 改为 PASS"
+ },
+ "sources": [
+  "https://www.shanghaiinvest.com/cn/viewfile.php?id=12615",
+  "http://sft.hunan.gov.cn/sft/xxgk_71079/gzdt/sjdt/201803/t20180301_4963622.html",
+  "https://www.beijinglawyers.org.cn/cac/1517906659123.htm",
+  "https://www.court.gov.cn/fabu/xiangqing/243981.html",
+  "https://www.court.gov.cn/zixun/xiangqing/426222.html",
+  "https://wenshu.court.gov.cn/",
+  "https://jr.sz.gov.cn/sjrb/xxgk/zjxx/zfcg/content/post_12305348.html",
+  "http://www.lvxunlaw.com/",
+  "https://www.tiantonglaw.com/Content/2024/10-31/1048212065.html",
+  "https://sunhold.com.cn/Cn/Index/pageView/catid/26/id/622.html",
+  "http://www.kunlanlaw.com/1904.html",
+  "http://www.lvzhouls.com/Mobile/news/content/id/851.html",
+  "https://sfj.sh.gov.cn/2020jcgk_gfxwj/20220314/59afbffe91f7471180007573ccf9583f.html",
+  "https://www.lifanglaw.com/cn/cnshzr/",
+  "https://www.zhirenlawyer.com/zrjz-5.html",
+  "https://www.yuntinglaw.com/jobopp/237",
+  "https://law.hnu.edu.cn/info/1221/17774.htm",
+  "https://www.acla.org.cn/info/c8e2a90999394156a9bf57a459e74299",
+  "https://www.lawyers.org.cn/info/910e1e1039d34e35bb7ee5b7e1c84583",
+  "https://www.lawyers.org.cn/info/b1f2f5fd697a4a6f857c6f122e389fbe",
+  "https://www.cqnews.net/1/detail/1341451947157352448/web/content_1341451947157352448.html",
+  "https://www.moj.gov.cn/pub/sfbgw/zwgkztzl/xxxcgcxjpfzsx/fzsxllqy/202505/t20250515_519401.html"
+ ],
+ "unverified": [
+  "未访谈任何律所：5 个渠道的占比/转化率/客单价均为公开资料推断，不是本窗口样本",
+  "未旁听实习生工作：T1–T3 的耗时、错误率、主办律师修改量为设计值，不是实测值",
+  "律所文章是自述：天同、申浩、坤澜的文章可能带品牌营销色彩，按 B 级处理",
+  "温州报告是行业二手报告：70% 关系推荐、<15% 数字化渗透率、83.4% 企业偏好均按 C 级处理，未独立复核样本",
+  "招标预算不等于律所收入：23.7 万元是采购预算，能否中标、实际利润未知",
+  "AI 替代是单点媒体案例：3 小时→2 分钟是受访律师个人体验，不是受控基准；同一报道还记录了 AI 编造案号",
+  "未把‘案源费’写成合规做法：公开文章提到案源费/介绍费，但全国律协规则第 13 条禁止支付案件介绍费/分成；冲突时以规则为准",
+  "未写入 ops/bus/state.json：避免跨窗口写入；建议 W0 保持 T15=todo/UNVERIFIED，不进入 done"
+ ],
+ "falsifiable": "若访谈 5 家律所中 ≥3 家表示熟人/老客户转介绍占案源 <30%，则 C1 优先级下调；若 3 家律所实习生实际不做类案检索/合同初筛/证据归档，则 T1–T3 作废或重写；若 R1 的 AI 初稿在 20 个案号复核中错误率 >5%，或出现 1 次编造案号，则 R1 降级为‘只做检索日志，不生成对照表’；若任一来源链接失效、规则修订、案例库/裁判文书网停止公开检索，则对应行降级或作废",
+ "next_human_actions": [
+  "选 1 家 10–50 人律所，约合伙人 + 在岗实习生各 1 名，按 10 问提纲访谈 30–40 分钟",
+  "访谈当天填记录模板：渠道占比、3 个实习生任务耗时、1 个可替代环节错误率",
+  "只记录原话与数字；不索取客户名单、案件材料、账号密码",
+  "拿到数据后重算 T1–T3 的耗时/错误率，并请 W0 复验；未拿到前保持 UNVERIFIED"
+ ],
+ "budget": {
+  "limit_cny": 10,
+  "spent_cny": 0,
+  "hours": 2.5,
+  "note": "只访问公开网页，无付费数据库、无广告、无采样例；成本以实际余额对账为准"
+ },
+ "state_claim": null,
+ "state_note": "state.json 未由本窗口直写；建议 W0 保持 T15=todo/UNVERIFIED，不进入 done",
+ "ts": "2026-11-21T13:05:00+08:00"
+}

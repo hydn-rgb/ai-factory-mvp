@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Factory DS Parasite",
+  "version": "0.1.0",
+  "description": "本地悬浮窗：从 DeepSeek 网页捕获对话，送到 127.0.0.1 的工厂桥接服务。不上第三方，不读写 cookie。",
+  "host_permissions": [
+    "https://chat.deepseek.com/*",
+    "http://127.0.0.1:8791/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://chat.deepseek.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}

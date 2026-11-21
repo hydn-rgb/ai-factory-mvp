@@ -1,0 +1,108 @@
+{
+ "task_id": "T9",
+ "owner": "W9",
+ "status": "PASS",
+ "artifact": "..\\..\\projects\\cognitive_gym\\BUILD.json",
+ "sha": "3bcdef1a2d8fc12806cb5330c5aadb39718d6e4f9a483a9fe6b8ec31f9ddce73",
+ "artifact_dir": "D:\\AI_Factory\\projects\\cognitive_gym",
+ "entry": "server.py",
+ "run": "python server.py --port 8787",
+ "url": "http://127.0.0.1:8787",
+ "request": "读 ops\\bus\\tasks\\T9.md，做自用课程站，回执写 out\\T9.json",
+ "base_clone": {
+  "repo": "https://github.com/wiltobuild/duolingo-lite",
+  "license": "MIT",
+  "local": "D:\\AI_Factory\\projects\\cognitive_gym",
+  "note": "保留 LICENSE；复用设计 tokens 与 lesson-state 纯函数思路，内容引擎改为课程 JSON + 服务端判分"
+ },
+ "files": 22,
+ "key_files": {
+  "server.py": "d180899d8c0df679",
+  "js/app.js": "8051aea757e03a85",
+  "courses/logic-fallacies.json": "5d01f0e11c79a296",
+  "courses/probability-decision.json": "981ff9b976170b93",
+  "courses/cognitive-bias.json": "e1fba68685e39486",
+  "courses/plan-7d.json": "5990b54062ef6ba0",
+  "tests/verify.py": "f7f959a7a6f2be97"
+ },
+ "self_test": {
+  "command": "python tests\\verify.py",
+  "checks": 48,
+  "failed": 0,
+  "exit_code": 0,
+  "result": "ALL PASS",
+  "covers": [
+   "3 门课程 JSON 结构、题目 id/选项/答案/解析",
+   "JS 语法与 lesson-state 单元测试",
+   "服务端判分（答错、正确答案与解析返回）",
+   "把握程度与过度自信标记",
+   "错题入本、重练答对后移出",
+   "一轮 ≥8 题 + ≥30 字复盘的当日闭环",
+   "记录落盘、重新读取、导出 JSON",
+   "最近 7 天字段结构、路径穿越拦截、无外部资源"
+  ]
+ },
+ "acceptance": {
+  "3_courses_practice": "PASS：逻辑谬误 / 概率与决策 / 认知偏差，各 12 道原创题；自检与浏览器实测可进入练习、判分、看解析",
+  "7_day_records": "UNVERIFIED：记录与连续天数机制已通过自检，但未预置、未伪造 7 天数据；需本人从 2026-11-21 起每天实际练习并写复盘",
+  "mistakes_review": "PASS：答错进入错题本，含题干、你的答案、正确答案、解析、把握程度；重练答对后移出；浏览器实测可见"
+ },
+ "browser_check": {
+  "tool": "in-app browser",
+  "done": [
+   "首页、三门课卡片、7 天计划渲染",
+   "完成 8 题一轮并写入记录",
+   "完成页写 54 字复盘并回到首页，闭环标记 2/2",
+   "记录页显示今日闭环与最近 7 天",
+   "概率课故意答错，错题本显示 1 道待回看"
+  ],
+  "console_errors": 0
+ },
+ "rules": {
+  "ai_role": "只出题与批改；前端拿不到答案/解析，提交后由服务端判分",
+  "human_role": "选项、把握程度、复盘全部由本人输入；代码不生成复盘",
+  "local_only": "只绑定 127.0.0.1；无外部字体、无 CDN、无上传、无商业化",
+  "content": "题目与解析原创，不复制任何付费课程内容"
+ },
+ "data": {
+  "file": "D:\\AI_Factory\\projects\\cognitive_gym\\data\\records.json",
+  "status": "运行后生成；当前未预置任何训练记录",
+  "export": "GET /api/export"
+ },
+ "unverified": [
+  "连续 7 天真实记录尚未产生；这是人的练习，AI 不能代做或预填",
+  "浏览器截图未取得：桌面窗口不可见，改为 DOM/无障碍快照与接口实测",
+  "未做移动真机测试；仅 CSS 断点与桌面 1000px 宽度无横向溢出检查",
+  "未改动 ops/bus/state.json，避免跨窗口写入"
+ ],
+ "findings": [
+  {
+   "id": "SEVEN_DAY_NEEDS_HUMAN",
+   "detail": "任务卡要求连续 7 天有记录。已提供记录、连续天数、导出与纸质模板，但没有生成任何假记录；7 天后由本人回看 data/records.json 验收。",
+   "level": "OPEN"
+  },
+  {
+   "id": "STATE_STILL_TODO",
+   "detail": "state.json 中 T9 仍为 todo；本窗口不直写共享状态，待 W0/总线推进。",
+   "level": "OPEN"
+  },
+  {
+   "id": "CLONE_DOWNGRADED",
+   "detail": "上游 duolingo-lite 只有 5 道西语示例题、无本地记录。保留其 MIT 许可与视觉/状态机基础，替换为 3 门课 + 服务端判分 + 错题/复盘/记录；不是原样跑通。",
+   "level": "INFO"
+  }
+ ],
+ "falsifiable": "若 python tests\\verify.py 非 0、BUILD.json 的 sha 不符、3 门课任一门无法练习，或 7 天后 data/records.json 中连续记录不足 7 天，则本回执的对应结论作废",
+ "budget": {
+  "limit_cny": 10,
+  "spent_cny": null,
+  "note": "无付费 API、无付费素材；git/npm 下载为免费公开仓库。成本以官方余额对账为准，不估价"
+ },
+ "state_claim": null,
+ "ts": "2026-11-21T11:05:00+08:00",
+ "rows": 48,
+ "maintenance": true,
+ "maintained_by": "W0",
+ "maintain_reason": "W0 复跑 python tests/verify.py -> 48 项 0 失败，补 rows 并升 PASS",
+ "evidence": "python tests/verify.py -> 48 checks, 0 failed, ALL PASS"
+}

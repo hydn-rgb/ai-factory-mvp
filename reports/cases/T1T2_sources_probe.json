@@ -1,0 +1,134 @@
+{
+ "highflyer": {
+  "url": "https://www.high-flyer.cn/",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://www.high-flyer.cn/",
+  "content_type": "text/html",
+  "bytes": 131072,
+  "sha256": "fe0fea7b6289476e144998b3a6ecca74e97370d4ad8d96e838e073b2cbc6e9ab",
+  "elapsed_ms": 295,
+  "error": null
+ },
+ "deepseek": {
+  "url": "https://www.deepseek.com/",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://www.deepseek.com/",
+  "content_type": "text/html",
+  "bytes": 115941,
+  "sha256": "3b248d5babf52e4ab2606b8e6fae8208dc9f5a65a0e0a39735fb83333586e8b9",
+  "elapsed_ms": 108,
+  "error": null
+ },
+ "sse_lingjun": {
+  "url": "https://www.sse.com.cn/disclosure/credibility/regulatory/news/c/c_20240220_5735603.shtml",
+  "ok": true,
+  "status": 200,
+  "final_url": "https://www.sse.com.cn/disclosure/credibility/regulatory/news/c/c_20240220_5735603.shtml",
+  "content_type": "text/html",
+  "bytes": 27212,
+  "sha256": "b727210b40f32f16672cfe087cf9c35a177c0e82b3fa46e2c8de1de439c734d1",
+  "elapsed_ms": 387,
+  "error": null
+ },
+ "szse_censure": {
+  "url": "http://dataclouds.cninfo.com.cn/sjother/regulatory_announcement/szse/93d63b3ae2ac11ee89b1fa163ebe0297.pdf",
+  "ok": true,
+  "status": 206,
+  "final_url": "http://dataclouds.cninfo.com.cn/sjother/regulatory_announcement/szse/93d63b3ae2ac11ee89b1fa163ebe0297.pdf",
+  "content_type": "application/pdf",
+  "bytes": 54542,
+  "sha256": "84451456505eeec7974c1c0467697809943e8d4bcfe2f00eb0f1d346286d2b61",
+  "elapsed_ms": 127,
+  "error": null
+ },
+ "lingjun_apology": {
+  "url": "https://www.cnfin.com/gs-lb/detail/20240221/4013983_1.html",
+  "ok": true,
+  "status": 200,
+  "final_url": "https://www.cnfin.com/gs-lb/detail/20240221/4013983_1.html",
+  "content_type": "text/html; charset=utf-8",
+  "bytes": 60569,
+  "sha256": "ad387945ec77802f548acc830efe58e957fb7235dd388c5ad281e9c108bc86de",
+  "elapsed_ms": 192,
+  "error": null
+ },
+ "hf_2025ret": {
+  "url": "https://www.21jingji.com/article/20260114/herald/c28662157ae4f0d9f2c7c944101a35ad.html",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://www.21jingji.com/article/20260114/herald/c28662157ae4f0d9f2c7c944101a35ad.html",
+  "content_type": "text/html",
+  "bytes": 31273,
+  "sha256": "393ab92a95ad6af093f72bb6ed58303ed92fb418fd7951dfc2a7e49b96b1a35d",
+  "elapsed_ms": 429,
+  "error": null
+ },
+ "hf_deepseek": {
+  "url": "https://www.21jingji.com/article/20250219/herald/193a45bc030bc53d6a0675508e95853a.html",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://www.21jingji.com/article/20250219/herald/193a45bc030bc53d6a0675508e95853a.html",
+  "content_type": "text/html",
+  "bytes": 37791,
+  "sha256": "b07b97767df38fa1686fba486a069a4f6d7a2b69ba271d78bac74039315c0902",
+  "elapsed_ms": 230,
+  "error": null
+ },
+ "hf_scale": {
+  "url": "https://wallstreetcn.com/articles/3737003",
+  "ok": true,
+  "status": 200,
+  "final_url": "https://wallstreetcn.com/articles/3737003",
+  "content_type": "text/html",
+  "bytes": 4332,
+  "sha256": "08ef35e127cf4be633ad73db00ee59c8cc4b776c5b4dc5c02aacecb661bccaa6",
+  "elapsed_ms": 194,
+  "error": null
+ },
+ "quant_llm": {
+  "url": "https://news.pedaily.cn/202503/547628.shtml",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://news.pedaily.cn/202503/547628.shtml",
+  "content_type": "text/html",
+  "bytes": 28279,
+  "sha256": "0634bc6d13f1def10e9e06af463cf96aa405999a5f445593f4aca791fdcc425f",
+  "elapsed_ms": 219,
+  "error": null
+ },
+ "lingjun_site": {
+  "url": "https://www.lingjuninvest.com/",
+  "ok": true,
+  "status": 200,
+  "final_url": "https://www.lingjuninvest.com/",
+  "content_type": "text/html; charset=utf-8",
+  "bytes": 51570,
+  "sha256": "0d06642faa20467c3fac01b3cc25624ba600c6a74c471f11b83ce06371096d59",
+  "elapsed_ms": 334,
+  "error": null
+ },
+ "lingjun_cn": {
+  "url": "https://www.lingjun.com.cn/",
+  "ok": false,
+  "status": null,
+  "final_url": "https://www.lingjun.com.cn/",
+  "content_type": "",
+  "bytes": 0,
+  "sha256": "",
+  "elapsed_ms": 15050,
+  "error": "URLError: <urlopen error timed out>"
+ },
+ "amac": {
+  "url": "https://www.amac.org.cn/",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://www.amac.org.cn/",
+  "content_type": "text/html",
+  "bytes": 131072,
+  "sha256": "9763ac340df0e6d3c9769ae04047dfad0fa917547abbc80d630b26aaf801b37a",
+  "elapsed_ms": 124,
+  "error": null
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "task_id": "T0",
+ "owner": "W0",
+ "status": "PASS",
+ "artifact": "..\\..\\reports\\mvp\\T0_MVP_SCOPE.md",
+ "sha": "a36ca568e38a065b55043b72b8cade8c4929ea6fde3ddf5cdf1d7e03b2f2dfbb",
+ "rows": 28,
+ "rows_definition": "28 项：9 条签收检查 + 6 类边界 + 5 类用途 + 8 条来源",
+ "generated_at": "2026-11-21"
+}

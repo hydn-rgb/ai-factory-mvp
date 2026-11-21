@@ -1,0 +1,70 @@
+{
+ "task_id": "T8",
+ "owner": "W8",
+ "status": "PASS",
+ "artifact": "..\\..\\ops\\metrics.py",
+ "sha": "096ed2e272efe4b1aa2b3ecdd13858e09be971c1caf0fa0d6e1adc7bc16a04d3",
+ "rows": 11,
+ "level": "L1",
+ "command": "python ops\\metrics.py --self-test",
+ "exit_code": 0,
+ "request": "读 ops\\bus\\tasks\\T8.md，做迭代指标，回执写 out\\T8.json",
+ "files": {
+  "ops/metrics.py": "096ed2e272efe4b1aa2b3ecdd13858e09be971c1caf0fa0d6e1adc7bc16a04d3",
+  "ops/templates/weekly_report.md": "ef3a85b79f97730129f99dd347f24542c8bea4c0254928a5442feadcece96885",
+  "ops/metrics_ledger/reports/WEEKLY_r20261121.md": "d1f6e2a6aeac06497d92ca2b8c8ec3e92164f7d7ebcf0ae2c413fac94c42894e",
+  "ops/metrics_ledger/rounds/r20261121.json": "85f1f8148cb6abbe6108b47524a3e730b65ee8311e423895aea97950b8a043d2",
+  "ops/metrics_ledger/predictions.jsonl": "c0372347edded1f2b88d9733ba301887f716161080f1df1539dd2ba67ff8c1a5",
+  "ops/metrics_ledger/hermes_reminder.json": "05ab3202bbbfd1398553ef3155804a8f65290756c1667db7911b6dbfef4fcf26"
+ },
+ "rows_meaning": "metrics.py --self-test 的 11 项断言（含 3 指标数值、null 分母、失败不删、下降给动作、Hermes 仅提醒、周报占位替换）",
+ "round_demo": {
+  "round": "r20261121",
+  "delivery_rate": 0.2222,
+  "delivery_frac": "2/9",
+  "hit_rate": null,
+  "hit_frac": "0/0",
+  "cost_per_product_cny": 0.0,
+  "cost_scope": "回执未记账 + cost_ledger 仅 1 条有效行 → 0.0 为下限，标记 is_lower_bound=true",
+  "next_action": "指标未下降：保持节奏，本轮把单产物成本压到 ≤¥5。"
+ },
+ "acceptance": {
+  "three_metrics_computable": "PASS（self-test 三项均出数：1/3、1/2、3.72 CNY；真实轮 r20261121 交付率与成本出数，命中率因 0 条已结算到期预测返回 null，未回填伪造）",
+  "decline_gives_one_action": "PASS（self-test 三项同时下降 → 3 条动作，next_action 取第一条；无下降时也给 1 条成本动作）",
+  "weekly_template": "PASS（ops/templates/weekly_report.md，生成 WEEKLY_r20261121.md，无 {{占位}} 残留）",
+  "no_beautify": "PASS（分母 0 → null；未记账成本标 lower_bound；FAIL 回执保留在 detail.failed）",
+  "no_delete_failures": "PASS（只追加快照，不覆盖/删除历史轮；out/*.json 只读）",
+  "hermes_degraded_to_reminder": "PASS（mode=degraded_reminder_only，forbidden 列自动改制度/发卡/调预算/自称进化）"
+ },
+ "findings": [
+  {
+   "id": "HIT_RATE_NULL_ON_REAL_ROUND",
+   "detail": "r20261121 无已结算到期预测，命中率=null（非 0/100）。已补 3 条前瞻预测（P-T8-01/02/03，open）并写台账；下一轮结算后即可出命中率。",
+   "level": "OPEN"
+  },
+  {
+   "id": "COST_IS_LOWER_BOUND",
+   "detail": "T3/T5 回执 budget.spent_cny 缺失，成本只统计到已入账 cost_ledger，0.0 是下限；未拿 0 冒充真实花费。动作：回执强制填 spent_cny。",
+   "level": "OPEN"
+  },
+  {
+   "id": "T5_RECEIPT_APPEARED_CONCURRENTLY",
+   "detail": "本轮读取时 out/T5.json 已由其他窗口写入且 sha 校验通过，计入有效产物；未改其文件与 state。",
+   "level": "INFO"
+  }
+ ],
+ "unverified": [
+  "真实轮命中率尚未跑出（需要至少 1 条已结算到期预测）",
+  "Hermes 侧尚未接入读取 hermes_reminder.json 的真实调度；只产出提醒文件，未做自动执行",
+  "未改 state.json（本窗口不直写）；T8 仍为 todo"
+ ],
+ "falsifiable": "若 python ops\\metrics.py --self-test 少于 11/11、check_handoff.py 返回非 0、或指标下降时不产出可执行动作，则本回执作废",
+ "budget": {
+  "limit_cny": 10,
+  "spent_cny": null,
+  "note": "本窗口无付费外部调用；成本以官方余额对账为准，不估价"
+ },
+ "verified_by": "python ops\\metrics.py --self-test && python ops\\bus\\check_handoff.py",
+ "state_claim": null,
+ "ts": "2026-11-21T10:52:00"
+}

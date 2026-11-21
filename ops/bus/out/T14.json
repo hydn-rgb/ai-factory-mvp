@@ -1,0 +1,164 @@
+{
+ "task_id": "T14",
+ "owner": "W14",
+ "status": "UNVERIFIED",
+ "artifact": "..\\..\\ops\\probe\\T14_nonstandard_demand_probe.md",
+ "sha": "027fc7b5f92078880c2ae35c2420879171ab474fe5c7b55588b52893b9cbb325",
+ "sha16": "027fc7b5f9207888",
+ "rows": 5,
+ "rows_definition": "5 条公开可核的现有 workaround 行；不是 5 条合格需求信号，也不是访谈记录",
+ "artifact_kind": "demand probe kit + public workaround evidence + empty pilot/interview trackers",
+ "request": "读 ops\\bus\\tasks\\T14.md，做需求探针，回执写 out\\T14.json",
+ "scope": "目标客户假设：5–50 人软件/外包/SaaS 团队，有企业客户或等保/投标要求，无专职安全人员。只做公开网页与官方定价核验；未联系任何客户",
+ "target_hypothesis": "小团队在“上线前要证明代码安全”时，说不清范围、交付物和合理价格；愿意为一份可交差、能修复、价格可预期的报告付钱。该句是待验证假设，不是访谈结论",
+ "method": {
+  "interviews_planned": 10,
+  "interviews_done": 0,
+  "workarounds_documented": 5,
+  "paid_pilots_planned": 3,
+  "paid_pilots_won": 0,
+  "pilot_offer": "¥99 首单（≤5 万行，C1–C5 扫描 + Top 10 人工复核 + 修复补丁 + 复扫 + 30 分钟讲解，48h）；¥50 定金锁档期；仅定金到账或书面采购承诺计入意向"
+ },
+ "acceptance": {
+  "at_least_3_signals_with_budget_owner_window": "FAIL 0/3：没有访谈，决策人/客户预算/时间窗均为未知；不用挂牌价冒充客户预算",
+  "every_row_has_source": "PASS 5/5：GitHub Docs、GitGuardian、道普云、极群智汇、广州阳光采购公示",
+  "10_interviews": "NOT DONE 0/10：本窗口无可访谈真人，未伪造记录",
+  "5_workarounds": "PASS 5/5：公开可核，但只证明市场存在，不证明客户会为我们的交付付钱",
+  "3_paid_pilots": "NOT DONE 0/3：需真人付定金，当前为空",
+  "no_fabricated_demand": "PASS：未写任何客户原话、预算或决策人；所有场景/触发均标为待访谈确认",
+  "interested_not_equal_paid": "PASS：计入意向的唯一标准是定金到账或书面采购承诺；口头兴趣不计",
+  "budget": "PASS：实际支出 ¥0 / 上限 ¥10；公开网页整理约 2h / 3h"
+ },
+ "signal_rows": [
+  {
+   "id": "S1",
+   "trigger": "上线前被要求查密钥（待访谈确认）",
+   "workaround": "GitHub secret scanning",
+   "verifiable_cost": "公开仓库免费；组织私有库需 GitHub Secret Protection（付费）",
+   "decision_maker": null,
+   "customer_budget": null,
+   "time_window": null,
+   "source": "https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning",
+   "evidence_level": "A",
+   "qualified": false
+  },
+  {
+   "id": "S2",
+   "trigger": "小团队想持续监控密钥泄漏（待访谈确认）",
+   "workaround": "GitGuardian Starter",
+   "verifiable_cost": "$0；≤25 名开发者、1 GB 仓库、500 条历史检出",
+   "decision_maker": null,
+   "customer_budget": null,
+   "time_window": null,
+   "source": "https://www.gitguardian.com/pricing",
+   "evidence_level": "A",
+   "qualified": false
+  },
+  {
+   "id": "S3",
+   "trigger": "要一份按行计价的代码测试报告（待访谈确认）",
+   "workaround": "道普云 代码测试",
+   "verifiable_cost": "¥2,000/万行单次；¥3,600/万行月 2 次；¥16,000/万行年 10 次",
+   "decision_maker": null,
+   "customer_budget": null,
+   "time_window": null,
+   "source": "https://www.yuntest.top/CodeTest.html",
+   "evidence_level": "B",
+   "qualified": false
+  },
+  {
+   "id": "S4",
+   "trigger": "要“专家版”报告去交差（待访谈确认）",
+   "workaround": "极群智汇 代码审计",
+   "verifiable_cost": "智能版低至 ¥3,000；专家版 ¥30,000",
+   "decision_maker": null,
+   "customer_budget": null,
+   "time_window": null,
+   "source": "https://www.jiqunzhihui.net.cn/shenji/",
+   "evidence_level": "B",
+   "qualified": false
+  },
+  {
+   "id": "S5",
+   "trigger": "投标/等保要求安全证明（邻近合规，非代码审计）",
+   "workaround": "等保二级测评",
+   "verifiable_cost": "广州交易集团 2025 采购：¥22,260/系统含税；市场口径 2–5 万/系统",
+   "decision_maker": null,
+   "customer_budget": null,
+   "time_window": null,
+   "source": "https://www.gzsun.com.cn/cgdt/001002/001002003/20250422/ffcb02f1-0810-45ff-b9f0-cc2b51f8028a.html",
+   "evidence_level": "A",
+   "qualified": false
+  }
+ ],
+ "pilot_slots": [
+  {
+   "slot": "P1",
+   "client": null,
+   "trigger": null,
+   "decision_maker": null,
+   "budget": null,
+   "time_window": null,
+   "deposit": null,
+   "status": "empty"
+  },
+  {
+   "slot": "P2",
+   "client": null,
+   "trigger": null,
+   "decision_maker": null,
+   "budget": null,
+   "time_window": null,
+   "deposit": null,
+   "status": "empty"
+  },
+  {
+   "slot": "P3",
+   "client": null,
+   "trigger": null,
+   "decision_maker": null,
+   "budget": null,
+   "time_window": null,
+   "deposit": null,
+   "status": "empty"
+  }
+ ],
+ "interview_log": {
+  "done": 0,
+  "planned": 10,
+  "status": "none_started",
+  "note": "本窗口没有可访谈的真人；不在无授权情况下冒充客户、联系陌生人或编造记录"
+ },
+ "sources": [
+  "https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning",
+  "https://www.gitguardian.com/pricing",
+  "https://www.yuntest.top/CodeTest.html",
+  "https://www.jiqunzhihui.net.cn/shenji/",
+  "https://www.gzsun.com.cn/cgdt/001002/001002003/20250422/ffcb02f1-0810-45ff-b9f0-cc2b51f8028a.html",
+  "https://snyk.io/plans/"
+ ],
+ "unverified": [
+  "未做任何访谈：10 次访谈为 0/10，所有场景/触发/决策人均为待验证假设",
+  "公开挂牌价与政府采购价不是目标客户的预算，不能替代“客户愿意付多少”",
+  "5 条 workaround 只证明市场上有人提供/使用这类方案，不证明本 ICP 会付费",
+  "3 个付费试点为 0/3，没有任何定金或书面承诺",
+  "未投放广告、未私信陌生人、未冒用任何身份；因此没有新增线索",
+  "未把结果写入 ops/bus/state.json，避免跨窗口写入"
+ ],
+ "falsifiable": "若 10 次访谈中 ≥7 人最近 12 个月无安全支出且无明确触发时间，则本探针的需求假设作废；若 3 个试点无人付 ¥50 定金，则本方向放弃；若任一来源链接失效或报价页删除对应价格，则对应行降级",
+ "next_human_actions": [
+  "按台账约访 10 人，先从 1 个老客户拿到 1 条完整信号",
+  "访谈后 10 分钟内填 signal_rows，只写原话、金额、日期",
+  "对最强信号开 1 个 ¥99 试点，收 ¥50 定金才算意向",
+  "出现 3 条达标信号或 3 笔定金后，再请 W0 复验并改 PASS"
+ ],
+ "budget": {
+  "limit_cny": 10,
+  "spent_cny": 0,
+  "hours": 2,
+  "note": "只访问公开网页，无付费 API、无广告、无采样例；成本以官方余额对账为准"
+ },
+ "state_claim": null,
+ "state_note": "state.json 未由本窗口直写；建议 W0 保持 T14=UNVERIFIED，不进入 done",
+ "ts": "2026-11-21T12:27:19+08:00"
+}

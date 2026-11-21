@@ -1,0 +1,112 @@
+{
+ "ha_inang": {
+  "url": "https://www.hnair.com/guanyuhaihang/tzzgx/dshgg/202201/P020220105324458896009.pdf",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://www.hnair.com/guanyuhaihang/tzzgx/dshgg/202201/P020220105324458896009.pdf",
+  "content_type": "application/pdf",
+  "bytes": 131072,
+  "sha256": "fd015bc4503dce4bad8f78a7826efb6851b9113c9d7f00864d4bab61f67fb422",
+  "elapsed_ms": 598,
+  "error": null
+ },
+ "yanhu": {
+  "url": "http://www.qinghai.gov.cn/zwgk/system/2021/08/17/010390868.shtml",
+  "ok": true,
+  "status": 200,
+  "final_url": "http://www.qinghai.gov.cn/zwgk/system/2021/08/17/010390868.shtml",
+  "content_type": "text/html",
+  "bytes": 56195,
+  "sha256": "4a66f69cad0e3659ed09ebdc2b5278b2188090daabdfe88978529c2f8424c107",
+  "elapsed_ms": 204,
+  "error": null
+ },
+ "lifan": {
+  "url": "https://epaper.cs.com.cn/zgzqb/html/2021-02/09/nw.D110000zgzqb_20210209_3-B080.htm",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://epaper.cs.com.cn/zgzqb/html/2021-02/09/nw.D110000zgzqb_20210209_3-B080.htm",
+  "content_type": "text/html",
+  "bytes": 112625,
+  "sha256": "7639fa604d203b3b28ffc5a51a37b573238f7cd5ace6eb23e91f445e31c3ff66",
+  "elapsed_ms": 179,
+  "error": null
+ },
+ "ziguang": {
+  "url": "https://www.yicai.com/news/101470646.html",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://www.yicai.com/news/101470646.html",
+  "content_type": "text/html; charset=utf-8",
+  "bytes": 18325,
+  "sha256": "2c5d15fa7df2647df97a80d80f1b93b9e8cefcd00aaada6616c5f95c9031a72a",
+  "elapsed_ms": 211,
+  "error": null
+ },
+ "zhongtai": {
+  "url": "https://paper.cnstock.com/html/2021-12/29/content_1551391.htm",
+  "ok": true,
+  "status": 200,
+  "final_url": "https://paper.cnstock.com/html/2021-12/29/content_1551391.htm",
+  "content_type": "text/html;charset=UTF-8",
+  "bytes": 39193,
+  "sha256": "01f39085c88cbb38426c55cc7dbf7bb1778c5de89c5605cc0fe7c0b33b0246d4",
+  "elapsed_ms": 217,
+  "error": null
+ },
+ "kangmei": {
+  "url": "https://epaper.cs.com.cn/zgzqb/images/2021-12/31/B102/zqB10231.pdf",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://epaper.cs.com.cn/zgzqb/images/2021-12/31/B102/zqB10231.pdf",
+  "content_type": "application/pdf",
+  "bytes": 131072,
+  "sha256": "68eea9f64fb180251d450c33fe0bbf8b3d4e0a49cdd4c909349fb772d2d7db9d",
+  "elapsed_ms": 171,
+  "error": null
+ },
+ "zhongzhi": {
+  "url": "https://pccz.court.gov.cn/pcajxxw/pcgg/ggxq?id=B4AB9A09286EA865E221796FD1FC0DAA",
+  "ok": true,
+  "status": 200,
+  "final_url": "https://pccz.court.gov.cn/pcajxxw/pcgg/ggxq?id=B4AB9A09286EA865E221796FD1FC0DAA",
+  "content_type": "text/html;charset=UTF-8",
+  "bytes": 20611,
+  "sha256": "ea51da6393347dbcebdfd5a8e07e1b0cf5b82003386f65c9dcc18eea4ed4add7",
+  "elapsed_ms": 288,
+  "error": null
+ },
+ "fangzheng": {
+  "url": "https://epaper.cs.com.cn/zgzqb/html/2022-11/29/nw.D110000zgzqb_20221129_1-B078.htm",
+  "ok": true,
+  "status": 206,
+  "final_url": "https://epaper.cs.com.cn/zgzqb/html/2022-11/29/nw.D110000zgzqb_20221129_1-B078.htm",
+  "content_type": "text/html",
+  "bytes": 103076,
+  "sha256": "95a0c9d01127bd604767cd6ac8734d29377b692d52d0db593ac48d117dd1277b",
+  "elapsed_ms": 128,
+  "error": null
+ },
+ "shenji": {
+  "url": "http://static.cninfo.com.cn/finalpage/2020-01-02/1207215247.PDF",
+  "ok": true,
+  "status": 206,
+  "final_url": "http://static.cninfo.com.cn/finalpage/2020-01-02/1207215247.PDF",
+  "content_type": "application/pdf",
+  "bytes": 131072,
+  "sha256": "be981d2c91dc34efdc782bae25e79e8299504f3f9609c3ea91b92e67afab08ef",
+  "elapsed_ms": 151,
+  "error": null
+ },
+ "hengda": {
+  "url": "https://www.zaobao.com.sg/news/china/story20240129-1465156",
+  "ok": true,
+  "status": 200,
+  "final_url": "https://www.zaobao.com/news/china/story20240129-1465156",
+  "content_type": "text/html",
+  "bytes": 131072,
+  "sha256": "6939d46a6ba170893b95d5717edcdc0667463711519377ee6f0c79a8db9a8c12",
+  "elapsed_ms": 1125,
+  "error": null
+ }
+}

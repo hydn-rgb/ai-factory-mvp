@@ -1,0 +1,26 @@
+{
+ "task_id": "T4",
+ "owner": "W4",
+ "status": "PASS",
+ "artifact": "..\\..\\plugins\\model_router\\index.js",
+ "sha": "e922ea94123a99fe",
+ "rows": 10,
+ "artifact_dir": "D:\\AI_Factory\\plugins\\model_router",
+ "files": {
+  "index.js": "e922ea94123a99fe",
+  "install.ps1": "90ef1ac04eefc8cc",
+  "package.json": "758626f3544da0b8",
+  "policy.json": "5bbd7f3747544d0e",
+  "README.md": "4201b196783824e2",
+  "rollback.ps1": "b49c05493fba942f",
+  "router.mjs": "4f21100abafc00ab",
+  "test_log.jsonl": "e3b7936c6b1b867d",
+  "test_router.mjs": "88d41e604df11e94"
+ },
+ "acceptance": {
+  "new_session_log": "PASS ses_e040be200ffeb2rU4v93k43d11 task_type=doc model=deepseek/deepseek-flash",
+  "manual_override": "PASS ses_e040bc8f9ffeKsKw6cAVkVBG9m manual_skip",
+  "error_fallback": "PASS unit test fallback+hook-error",
+  "rollback": "PASS deleted plugin dir; chat ok ses_e040b1320ffe7Ocfbx6hWqPV10; no new log row"
+ }
+}

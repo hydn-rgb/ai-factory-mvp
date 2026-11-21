@@ -1,0 +1,12 @@
+{
+ "task_id": "T11",
+ "owner": "W11",
+ "status": "PASS",
+ "artifact": "..\\..\\ops\\bus\\out\\T9.json",
+ "sha": "af1dc8ca885ca9ab72e25ac3ae916cd145af3dc4e7fbc8a0139ff12a4a48e2c7",
+ "rows": 48,
+ "maintenance": true,
+ "maintained_by": "W0",
+ "maintain_reason": "W0 按 T11 卡修复 T9 回执：补 rows=48，复验 48/48 通过",
+ "evidence": "audit.py --task T9 -> ACCEPT（见修复后状态）"
+}

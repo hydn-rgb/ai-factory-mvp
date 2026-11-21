@@ -1,0 +1,74 @@
+{
+ "task_id": "T6",
+ "owner": "W6",
+ "status": "PASS",
+ "artifact": "..\\..\\ops\\bus\\audit.py",
+ "sha": "91bf59570614393085614afb1c4933dab20b4492bf9a0292ba48fd3a4ff2ceaf",
+ "rows": 12,
+ "rows_meaning": "自检断言数：audit.py 10/10 + next_round.py 11/11（含伪造拒收、真实通过、done、新卡、幂等）",
+ "artifact_dir": "D:\\AI_Factory\\ops\\bus",
+ "files": {
+  "audit.py": "b69481a332f869b5",
+  "next_round.py": "ffc430f567ba521f"
+ },
+ "acceptance": {
+  "fake_receipt_rejected": "PASS 缺 rows / 产物不存在 / sha 不符 / owner 不符 / status 非法 / rows=0 全部 REJECT",
+  "owner_collision_rejected": "PASS 回执 owner 与 state 不一致、或同一 owner 负责两任务，均 REJECT",
+  "real_receipt_done": "PASS 沙箱内真实 PASS 回执经 --apply 后 state=done",
+  "next_card_generated": "PASS 沙箱内 T50 通过后生成 T51.md，目标取自源卡“下一步”，并登记 state todo",
+  "idempotent": "PASS 同一任务重复运行不重复派卡（T52 未出现）",
+  "write_guard": "PASS 写 state 前校验 sha；被其他窗口改动则拒写（state.json 备份 .bak-T6-*）",
+  "no_constitution_change": "PASS 仅写 ops/bus 下的 state/任务卡；未改宪法/审批"
+ },
+ "self_test": {
+  "audit": {
+   "passed": 10,
+   "total": 10,
+   "command": "python ops\\bus\\audit.py --self-test",
+   "exit_code": 0
+  },
+  "next_round": {
+   "passed": 11,
+   "total": 11,
+   "command": "python ops\\bus\\next_round.py --self-test",
+   "exit_code": 0
+  }
+ },
+ "commands": {
+  "audit_all": "python ops\\bus\\audit.py",
+  "audit_one": "python ops\\bus\\audit.py --task T6 --apply",
+  "dispatch_one": "python ops\\bus\\next_round.py --task T6 --apply",
+  "dispatch_all": "python ops\\bus\\next_round.py --all --apply"
+ },
+ "production_run": {
+  "applied_task": "T6",
+  "state_after": "done",
+  "next_task": "T10",
+  "next_task_owner": "W10",
+  "card_path": "D:\\AI_Factory\\ops\\bus\\tasks\\T10.md",
+  "command": "python ops\\bus\\audit.py --task T6 --apply && python ops\\bus\\next_round.py --task T6 --apply",
+  "exit_code": 0,
+  "goal_source": "fallback：T6 卡未写“下一步”，T10 只做复验/补证，待 W0 确认后再加码"
+ },
+ "observed_other_windows": [
+  "out/T7.json 与 out/T8.json 已出现且 audit 判定 ACCEPT；state 仍为 todo。本窗口只验收 T6，未替 W7/W8 标 done。",
+  "T3/T4/T5 回执均 ACCEPT；其中 T3 仍有 OPEN findings，是否推进由 W0 决定。"
+ ],
+ "unverified": [
+  "未在真实多人并发下做压力测试；只做了单窗口写前 sha 校验",
+  "T10 为无“下一步”时的复验卡，不是价值判断产物；需要 W0 确认目标",
+  "未自动处理 T8/T3/T4/T5 的状态推进，避免越过其他窗口",
+  "本窗口无付费外部调用；成本以官方余额对账为准"
+ ],
+ "falsifiable": "若 audit.py --self-test < 10/10、next_round.py --self-test < 11/11、伪造回执被放行、T6 未变 done 或 T10 未出现，则本回执作废",
+ "budget": {
+  "limit_cny": 10,
+  "spent_cny": null,
+  "note": "纯本地 Python 标准库；无付费外部调用"
+ },
+ "ts": "2026-11-21T10:53:00",
+ "maintenance": true,
+ "maintained_by": "W0",
+ "maintain_reason": "审计模块新增 heartbeat 与预算继承后，W0 复验 self-test 12/12",
+ "evidence": "python ops/bus/audit.py --self-test -> 12/12"
+}

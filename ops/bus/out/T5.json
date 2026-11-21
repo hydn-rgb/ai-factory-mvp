@@ -1,0 +1,55 @@
+{
+ "task_id": "T5",
+ "owner": "W5",
+ "status": "PASS",
+ "artifact": "..\\..\\.opencode\\command\\调研.md",
+ "sha": "51bdf2b34eb366de",
+ "rows": 14,
+ "rows_meaning": "命令层静态验收项：5 个命令 + researcher agent + README 的存在性、frontmatter、点选分支、三行凭证、约束与备份",
+ "artifact_dir": "D:\\AI_Factory\\.opencode",
+ "files": {
+  ".opencode/command/调研.md": "51bdf2b34eb366de",
+  ".opencode/command/抄.md": "35ebdb20b472e2b4",
+  ".opencode/command/交付.md": "b3e43cecb75482ec",
+  ".opencode/command/状态.md": "2a68d46cdbe83123",
+  ".opencode/command/发卡.md": "758bd33f4b43e8b6",
+  ".opencode/agent/researcher.md": "3e30b8f22caf18f4",
+  ".opencode/README_T5.md": "da228a9787f5c8b6"
+ },
+ "acceptance": {
+  "files_present": "PASS 5 命令 + researcher agent + README 均存在",
+  "no_param_three_options": "PASS(静态) /调研 无参数分支调用 question 工具，正好 3 个选项：轻 · 15 分钟 / 中 · 1 小时 / 重 · 3 小时",
+  "level_dispatch": "PASS 轻=adler-reading-sop；中=systematic-intel-engine；重=systematic-intel-engine+red-blue-due-diligence+evidence-chain-auditor",
+  "three_line_receipt": "PASS 5 个命令结尾均固定 改了什么 / 跑了什么 / 产物 sha",
+  "copy_three_pick_one": "PASS /抄 强制 3 候选对照 + 五项打分 + 选 1 并说明淘汰理由 + 文件级改造计划",
+  "handoff_check": "PASS /交付 先跑 python ops\\bus\\check_handoff.py；当前 exit 0 / PASS",
+  "evidence_check": "PASS /交付 逐张核对 rows>0、artifact 存在、sha16、evidence_path、owner 唯一",
+  "status_board": "PASS /状态 读 state.json 输出 T1–T9 表 + 在做/卡住/下一步",
+  "issue_card": "PASS /发卡 生成 T<n>.md（≤20 行）+ 备份 state + 登记 todo",
+  "researcher_agent": "PASS mode=all；write 仅允许 reports/research/**",
+  "no_third_party_deps": "PASS 仅用内置工具与 Python 标准库",
+  "no_hardcoded_keys": "PASS 命令与 agent 文件中无密钥",
+  "config_backup": "PASS opencode.json.bak-T5-20261121-104924 + state.json.bak-T5-20261121-104924",
+  "check_handoff_exit": "PASS python ops\\bus\\check_handoff.py → exit 0"
+ },
+ "command": "python ops\\bus\\check_handoff.py",
+ "exit_code": 0,
+ "evidence_path": "..\\..\\.opencode\\README_T5.md",
+ "report": {
+  "path": "..\\..\\.opencode\\README_T5.md",
+  "sha": "da228a9787f5c8b6"
+ },
+ "unverified": [
+  "未在真实 TUI 中手动跑一遍 /调研 并点选；已静态核对 question 调用与 3 个选项文本，实际弹窗需人工确认",
+  "未触发模型执行各级别 skill；仅确认命令模板中的路由",
+  "本窗口无付费外部调用；成本以官方余额对账为准"
+ ],
+ "falsifiable": "若 /调研 无参数时不出现 3 个可点选项、任一命令缺少三行凭证、或 check_handoff.py 返回非 0，则本回执作废",
+ "budget": {
+  "limit_cny": 10,
+  "spent_cny": null,
+  "note": "无付费外部调用；不估价"
+ },
+ "state_claim": "state.json T5 → PASS，artifact/sha 与本回执一致",
+ "ts": "2026-11-21T10:52:00"
+}

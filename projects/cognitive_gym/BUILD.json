@@ -1,0 +1,137 @@
+{
+  "name": "认知道场 cognitive_gym",
+  "version": "1.0.0",
+  "created_at": "2026-11-21T11:00:34+08:00",
+  "base": {
+    "repo": "https://github.com/wiltobuild/duolingo-lite",
+    "license": "MIT",
+    "usage": "design tokens + lesson-state pattern; content engine replaced"
+  },
+  "entry": "server.py",
+  "run": "python server.py --port 8787",
+  "url": "http://127.0.0.1:8787",
+  "courses": [
+    "logic-fallacies",
+    "probability-decision",
+    "cognitive-bias"
+  ],
+  "questions_per_course": 12,
+  "tests": {
+    "command": "python tests/verify.py",
+    "checks": 48,
+    "failed": 0,
+    "result": "PASS"
+  },
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha16": "023c32e5b54308d5",
+      "bytes": 45
+    },
+    {
+      "path": "courses\\cognitive-bias.json",
+      "sha16": "e1fba68685e39486",
+      "bytes": 5671
+    },
+    {
+      "path": "courses\\index.json",
+      "sha16": "95388d89ba974145",
+      "bytes": 79
+    },
+    {
+      "path": "courses\\logic-fallacies.json",
+      "sha16": "5d01f0e11c79a296",
+      "bytes": 6920
+    },
+    {
+      "path": "courses\\plan-7d.json",
+      "sha16": "5990b54062ef6ba0",
+      "bytes": 1129
+    },
+    {
+      "path": "courses\\probability-decision.json",
+      "sha16": "981ff9b976170b93",
+      "bytes": 5928
+    },
+    {
+      "path": "css\\app.css",
+      "sha16": "80d5e2a7ef195e5e",
+      "bytes": 18195
+    },
+    {
+      "path": "css\\base.css",
+      "sha16": "2989948ded4ef90f",
+      "bytes": 833
+    },
+    {
+      "path": "css\\components.css",
+      "sha16": "c48fec7399846c98",
+      "bytes": 11440
+    },
+    {
+      "path": "css\\tokens.css",
+      "sha16": "58b46875db01a0e2",
+      "bytes": 5127
+    },
+    {
+      "path": "docs\\7-DAY.md",
+      "sha16": "f949199e9cab7895",
+      "bytes": 938
+    },
+    {
+      "path": "index.html",
+      "sha16": "a6559bf49d24777a",
+      "bytes": 801
+    },
+    {
+      "path": "js\\api.js",
+      "sha16": "e4956f38481803c9",
+      "bytes": 1135
+    },
+    {
+      "path": "js\\app.js",
+      "sha16": "8051aea757e03a85",
+      "bytes": 38302
+    },
+    {
+      "path": "js\\state\\lesson-state.js",
+      "sha16": "c9e6e59c62ef422d",
+      "bytes": 3340
+    },
+    {
+      "path": "LICENSE",
+      "sha16": "b0de2a73918dcf35",
+      "bytes": 1088
+    },
+    {
+      "path": "NOTICE.md",
+      "sha16": "2a7705de3bf86d2e",
+      "bytes": 1175
+    },
+    {
+      "path": "package.json",
+      "sha16": "07da71abf48b7afb",
+      "bytes": 358
+    },
+    {
+      "path": "README.md",
+      "sha16": "823c2c244c174f6c",
+      "bytes": 4113
+    },
+    {
+      "path": "server.py",
+      "sha16": "d180899d8c0df679",
+      "bytes": 23370
+    },
+    {
+      "path": "tests\\lesson-state.test.mjs",
+      "sha16": "07753edcc8488e87",
+      "bytes": 1922
+    },
+    {
+      "path": "tests\\verify.py",
+      "sha16": "f7f959a7a6f2be97",
+      "bytes": 9092
+    }
+  ]
+}

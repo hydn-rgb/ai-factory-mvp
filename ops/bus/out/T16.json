@@ -1,0 +1,49 @@
+{
+ "task_id": "T16",
+ "owner": "W16",
+ "status": "PASS",
+ "artifact": "..\\..\\reports\\cases\\T16_bigtech_cross_anchors.md",
+ "sha": "bf698110461100eb0334670038fe3effee5f3302e42c9c9307a6750c2a50d5c8",
+ "rows": 28,
+ "rows_meaning": "20 个锚点 + 5 个失败案例 + 3 条反事实",
+ "artifact_kind": "markdown anchor library",
+ "request": "读 ops\\bus\\tasks\\T16.md，做锚点库，回执写 out\\T16.json",
+ "source_access_date": "2026-11-21",
+ "counts": {
+  "anchors": 20,
+  "failures": 5,
+  "counterfactuals": 3,
+  "sources": 51
+ },
+ "evidence_levels": {
+  "A": 24,
+  "B": 4,
+  "C": 0
+ },
+ "acceptance": {
+  "anchors_20": "PASS：A1-A20，每条含决策/时间/约束/没做什么/结果/来源",
+  "failures_5": "PASS：F1 Fire Phone、F2 Microsoft-Nokia、F3 Yahoo、F4 Google Glass、F5 Kodak",
+  "counterfactuals_3": "PASS：C1 IBM 封闭、C2 Google 留 Motorola、C3 Yahoo 接受 Microsoft",
+  "every_row_has_source_and_level": "PASS：28 行均带 S 编号与 A/B 级别；来源表 51 条",
+  "not_only_winners": "PASS：5 个失败 + A15 Meta metaverse 亏损锚点 + 3 条反事实，未只选赢家",
+  "no_insider_claim": "PASS：约束列用 [公开]/[推断] 标注；未把公开叙事写成内幕",
+  "no_fabricated_constraint": "PASS：约束来自官方文件/公开信/结构事实；推断处明确标注",
+  "budget": "PASS：公开网页检索与整理，无付费数据采购；金额不估价"
+ },
+ "unverified": [
+  "未逐页抓取全部 51 条来源全文；部分媒体有付费墙，Tesla 官网对自动抓取返回 403；A 级以官方原文/监管文件为准，B 级用于交叉",
+  "结果/代价只记录公开结果，不声称单一决策导致该结果；未做因果计量",
+  "约束列的 [推断] 是分析假设，不是内部消息；不能当作大厂真实想法",
+  "Kodak 的“原型被搁置”来自公开报道/前员工回顾，属 B 级叙事，不是董事会文件",
+  "尚未用本锚点库校验我方具体决策；任务卡下一步为 W16 校验报告"
+ ],
+ "falsifiable": "若锚点少于 20、失败少于 5、反事实少于 3、任一行缺来源/级别，或任一 A 级来源链接失效且无替代来源，则本回执作废；若把 [推断] 写成事实，对应结论作废",
+ "budget": {
+  "limit_cny": 10,
+  "spent_cny": 0,
+  "note": "仅公开网页检索与整理；无付费 API/数据库；成本以官方余额对账为准"
+ },
+ "state_claim": null,
+ "state_note": "未直写 state.json；建议 W0 验收后将 T16 置 done 并登记 artifact/sha",
+ "ts": "2026-11-21T13:30:00+08:00"
+}

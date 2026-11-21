@@ -1,0 +1,8 @@
+{
+  "name": "opencode-factory-ops",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Factory MVP tools: status / audit / case / probe. Read-only, public-data only.",
+  "main": "index.js"
+}
