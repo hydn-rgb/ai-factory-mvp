@@ -53,7 +53,7 @@ cd <AI_FACTORY_ROOT>
 ## 四、当前在做的事（按优先级）
 
 1. **T0（done）**：MVP 范围/签收/边界/发布；同行定位 = 交叉验证 + 补充论据，非独立 alpha；Go 决策 = 暂不订阅。
-2. **T1/T2（done）**：幻方量化、灵均量化 V1–V4 四版并联，产物 `reports/cases/highflyer_v4.md` / `lingjun_v4.md`；旧版只读、只增不删。
+2. **T1/T2（done）**：某量化机构A、某量化机构B V1–V4 四版并联，产物 `reports/cases/highflyer_v4.md` / `lingjun_v4.md`；旧版只读、只增不删。
 3. **T14（todo，UNVERIFIED）**：非标需求探针。只推进真人访谈：0/10 访谈、0/3 付费试点；**不把“感兴趣”写成“愿付费”**。
 4. **T15（todo，UNVERIFIED）**：律师获客/实习生 SOP。只推进 1 家律所 + 1 名实习生访谈；0/1、0/1。
 5. **发行包**：`dist/ai-factory-mvp/` 已 git commit（`本地 commit`），`selftest.ps1` PASS；GitHub 未认证，未 push，详见包内 `push.ps1`。
@@ -87,7 +87,7 @@ cd <AI_FACTORY_ROOT>
 - 信源探针报告：`reports/sources/probe_20261121_125528.md`
 - 资产清单：`reports/inventory/ACTIVE_INVENTORY.md`
 - 大厂锚点：`reports/cases/T16_bigtech_cross_anchors.md`（28 行）
-- 幻方/灵均：`reports/cases/highflyer_v4.md`（21 行证据）、`reports/cases/lingjun_v4.md`（22 行证据）
+- 机构A/机构B：`reports/cases/highflyer_v4.md`（21 行证据）、`reports/cases/lingjun_v4.md`（22 行证据）
 - MVP 范围/Go 决策：`reports/mvp/T0_MVP_SCOPE.md`、`reports/mvp/T0_opencode_go_decision.md`
 - 插件真实调用：`reports/mvp/plugin_calls/calls.jsonl` + `README.md`
 - 发行包：`dist/ai-factory-mvp/`（commit `本地 commit`，未 push）

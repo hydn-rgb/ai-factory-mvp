@@ -1,271 +1,254 @@
 {
- "updated_at": "2026-11-21",
- "budget_per_window_cny": 10,
- "tasks": {
-  "T0": {
-   "owner": "W0",
-   "status": "done",
-   "artifact": "..\\..\\reports\\mvp\\T0_MVP_SCOPE.md",
-   "sha": "a36ca568e38a065b55043b72b8cade8c4929ea6fde3ddf5cdf1d7e03b2f2dfbb",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 28,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T0.json"
+  "updated_at": "2026-11-21",
+  "budget_per_window_cny": 10,
+  "tasks": {
+    "T0": {
+      "owner": "W0",
+      "status": "done",
+      "artifact": "..\\..\\reports\\mvp\\T0_MVP_SCOPE.md",
+      "sha": "a36ca568e38a065b55043b72b8cade8c4929ea6fde3ddf5cdf1d7e03b2f2dfbb",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 28,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T0.json"
+    },
+    "T1": {
+      "owner": "W1",
+      "status": "done",
+      "artifact": "..\\..\\reports\\cases\\highflyer_v4.md",
+      "sha": "70d69b88f8db35145c4f37e86e14c96198b2a7f3aca8e4e16fe143e24fb1cf51",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 21,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T1.json"
+    },
+    "T2": {
+      "owner": "W2",
+      "status": "done",
+      "artifact": "..\\..\\reports\\cases\\lingjun_v4.md",
+      "sha": "ddf8f30a38e2c36a08743607fdedcdf66e3e43b1b6b13ce83b4e4e7f1d1fcdaf",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 22,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T2.json"
+    },
+    "T4": {
+      "owner": "W4",
+      "status": "done",
+      "artifact": "..\\..\\plugins\\model_router\\index.js",
+      "sha": "e922ea94123a99fe",
+      "rows": 10,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T4.json",
+      "budget_cny": 10,
+      "spent_cny": 0
+    },
+    "T5": {
+      "owner": "W5",
+      "status": "done",
+      "artifact": "..\\..\\.opencode\\command\\调研.md",
+      "sha": "51bdf2b34eb366de",
+      "rows": 14,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T5.json",
+      "budget_cny": 10,
+      "spent_cny": 0
+    },
+    "T6": {
+      "owner": "W6",
+      "status": "done",
+      "artifact": "..\\..\\ops\\bus\\audit.py",
+      "sha": "91bf59570614393085614afb1c4933dab20b4492bf9a0292ba48fd3a4ff2ceaf",
+      "rows": 12,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T6.json",
+      "next_task": "T10",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "last_reject": {
+        "at": "2026-11-21T11:52:37",
+        "receipt": "T6.json",
+        "errors": [
+          "sha 与产物不符: 回执=b69481a332f869b5 实际=9ac6ed9cd1eee8e8"
+        ]
+      }
+    },
+    "T7": {
+      "owner": "W7",
+      "status": "done",
+      "artifact": "..\\..\\ops\\probe\\T7_ds_process_probe.md",
+      "sha": "724a956fbd24c95212132f9212074e09e7d330b4a2db2a25ecaf33e5d9ebd399",
+      "rows": 10,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T7.json",
+      "budget_cny": 10,
+      "spent_cny": 0
+    },
+    "T8": {
+      "owner": "W8",
+      "status": "done",
+      "artifact": "..\\..\\ops\\metrics.py",
+      "sha": "096ed2e272efe4b1aa2b3ecdd13858e09be971c1caf0fa0d6e1adc7bc16a04d3",
+      "rows": 11,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T8.json",
+      "budget_cny": 10,
+      "spent_cny": 0
+    },
+    "T9": {
+      "owner": "W9",
+      "status": "done",
+      "artifact": "..\\..\\projects\\cognitive_gym\\BUILD.json",
+      "sha": "3bcdef1a2d8fc12806cb5330c5aadb39718d6e4f9a483a9fe6b8ec31f9ddce73",
+      "last_reject": {
+        "at": "2026-11-21T11:52:58",
+        "receipt": "T9.json",
+        "errors": [
+          "缺字段: rows",
+          "rows 必须是正整数（证据行数/检查项数）"
+        ]
+      },
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 48,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T9.json"
+    },
+    "T10": {
+      "owner": "W10",
+      "status": "cancelled",
+      "artifact": "",
+      "sha": "",
+      "parent": "T6",
+      "source_receipt": "out/T6.json",
+      "created_at": "2026-11-21T10:52:02",
+      "note": "fallback 产物，已按 W0 决定作废",
+      "budget_cny": 10,
+      "spent_cny": 0
+    },
+    "T11": {
+      "owner": "W11",
+      "status": "done",
+      "artifact": "..\\..\\ops\\bus\\out\\T9.json",
+      "sha": "af1dc8ca885ca9ab72e25ac3ae916cd145af3dc4e7fbc8a0139ff12a4a48e2c7",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 48,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T11.json"
+    },
+    "T12": {
+      "owner": "W12",
+      "status": "done",
+      "artifact": "..\\..\\ops\\bus\\out\\T12-evidence.json",
+      "sha": "fb6191eb1d3d11a520d617280c470a9f4718f6b2074d2249cc05019a1ca9f9fd",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "last_reject": {
+        "at": "2026-11-21T13:59:26",
+        "receipt": "T12-evidence.json",
+        "errors": [
+          "缺字段: owner",
+          "缺字段: status",
+          "缺字段: artifact",
+          "缺字段: sha",
+          "缺字段: rows",
+          "task_id(T12) 与文件名(T12-evidence) 不一致",
+          "rows 必须是正整数（证据行数/检查项数）"
+        ]
+      },
+      "rows": 12,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T12.json"
+    },
+    "T13": {
+      "owner": "W13",
+      "status": "done",
+      "artifact": "..\\..\\ops\\context\\watch.py",
+      "sha": "5357328bffe1d215c3d2bb29f24d20024482943d81b655f8a53fb1b626b0d3a7",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 14,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T13.json"
+    },
+    "T14": {
+      "owner": "W14",
+      "status": "todo",
+      "artifact": "",
+      "sha": "",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "last_reject": {
+        "at": "2026-11-21T13:59:26",
+        "receipt": "T14.json",
+        "errors": []
+      }
+    },
+    "T15": {
+      "owner": "W15",
+      "status": "todo",
+      "artifact": "",
+      "sha": "",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "last_reject": {
+        "at": "2026-11-21T13:59:26",
+        "receipt": "T15.json",
+        "errors": []
+      }
+    },
+    "T16": {
+      "owner": "W16",
+      "status": "done",
+      "artifact": "..\\..\\reports\\cases\\T16_bigtech_cross_anchors.md",
+      "sha": "bf698110461100eb0334670038fe3effee5f3302e42c9c9307a6750c2a50d5c8",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 28,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T16.json"
+    },
+    "T17": {
+      "owner": "W17",
+      "status": "done",
+      "artifact": "..\\..\\reports\\cases\\T17_bankruptcy_10cases.md",
+      "sha": "5ece4faac1631286a0c6575175f206a0ca147ae1d13830e2de3b2d8690f5aa4a",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 16,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T17.json"
+    },
+    "T18": {
+      "owner": "W18",
+      "status": "done",
+      "artifact": "..\\..\\reports\\cases\\T18_developer_epitaphs.md",
+      "sha": "b13468393f8622bc5a039e53afbb8eba315ae897cb5ab4d6bce99d11f0a8ac78",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 20,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T18.json"
+    },
+    "T20": {
+      "owner": "W20",
+      "status": "done",
+      "artifact": "..\\..\\reports\\cases\\T20_advisor_observation_forms.md",
+      "sha": "ba76d71d2f31c9d10295e3bdd54c3fb5adca23bd08aa7932cc19177aabe40e39",
+      "budget_cny": 10,
+      "spent_cny": 0,
+      "rows": 24,
+      "verified_at": "2026-11-21T13:59:26",
+      "receipt": "out/T20.json"
+    }
   },
-  "T1": {
-   "owner": "W1",
-   "status": "done",
-   "artifact": "..\\..\\reports\\cases\\highflyer_v4.md",
-   "sha": "70d69b88f8db35145c4f37e86e14c96198b2a7f3aca8e4e16fe143e24fb1cf51",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 21,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T1.json"
-  },
-  "T2": {
-   "owner": "W2",
-   "status": "done",
-   "artifact": "..\\..\\reports\\cases\\lingjun_v4.md",
-   "sha": "ddf8f30a38e2c36a08743607fdedcdf66e3e43b1b6b13ce83b4e4e7f1d1fcdaf",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 22,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T2.json"
-  },
-  "T3": {
-   "owner": "W3",
-   "status": "done",
-   "artifact": "..\\..\\ops\\buffer\\dsh_buffer.py",
-   "sha": "d3916e03f542c4b3b6918fd57e1723a01e5be6fb6056168befc58d0769debec9",
-   "rows": 21,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T3.json",
-   "budget_cny": 10,
-   "spent_cny": 0
-  },
-  "T4": {
-   "owner": "W4",
-   "status": "done",
-   "artifact": "..\\..\\plugins\\model_router\\index.js",
-   "sha": "e922ea94123a99fe",
-   "rows": 10,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T4.json",
-   "budget_cny": 10,
-   "spent_cny": 0
-  },
-  "T5": {
-   "owner": "W5",
-   "status": "done",
-   "artifact": "..\\..\\.opencode\\command\\调研.md",
-   "sha": "51bdf2b34eb366de",
-   "rows": 14,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T5.json",
-   "budget_cny": 10,
-   "spent_cny": 0
-  },
-  "T6": {
-   "owner": "W6",
-   "status": "done",
-   "artifact": "..\\..\\ops\\bus\\audit.py",
-   "sha": "91bf59570614393085614afb1c4933dab20b4492bf9a0292ba48fd3a4ff2ceaf",
-   "rows": 12,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T6.json",
-   "next_task": "T10",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "last_reject": {
-    "at": "2026-11-21T11:52:37",
-    "receipt": "T6.json",
-    "errors": [
-     "sha 与产物不符: 回执=b69481a332f869b5 实际=9ac6ed9cd1eee8e8"
-    ]
-   }
-  },
-  "T7": {
-   "owner": "W7",
-   "status": "done",
-   "artifact": "..\\..\\ops\\probe\\T7_ds_process_probe.md",
-   "sha": "724a956fbd24c95212132f9212074e09e7d330b4a2db2a25ecaf33e5d9ebd399",
-   "rows": 10,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T7.json",
-   "budget_cny": 10,
-   "spent_cny": 0
-  },
-  "T8": {
-   "owner": "W8",
-   "status": "done",
-   "artifact": "..\\..\\ops\\metrics.py",
-   "sha": "096ed2e272efe4b1aa2b3ecdd13858e09be971c1caf0fa0d6e1adc7bc16a04d3",
-   "rows": 11,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T8.json",
-   "budget_cny": 10,
-   "spent_cny": 0
-  },
-  "T9": {
-   "owner": "W9",
-   "status": "done",
-   "artifact": "..\\..\\projects\\cognitive_gym\\BUILD.json",
-   "sha": "3bcdef1a2d8fc12806cb5330c5aadb39718d6e4f9a483a9fe6b8ec31f9ddce73",
-   "last_reject": {
-    "at": "2026-11-21T11:52:58",
-    "receipt": "T9.json",
-    "errors": [
-     "缺字段: rows",
-     "rows 必须是正整数（证据行数/检查项数）"
-    ]
-   },
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 48,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T9.json"
-  },
-  "T10": {
-   "owner": "W10",
-   "status": "cancelled",
-   "artifact": "",
-   "sha": "",
-   "parent": "T6",
-   "source_receipt": "out/T6.json",
-   "created_at": "2026-11-21T10:52:02",
-   "note": "fallback 产物，已按 W0 决定作废",
-   "budget_cny": 10,
-   "spent_cny": 0
-  },
-  "T11": {
-   "owner": "W11",
-   "status": "done",
-   "artifact": "..\\..\\ops\\bus\\out\\T9.json",
-   "sha": "af1dc8ca885ca9ab72e25ac3ae916cd145af3dc4e7fbc8a0139ff12a4a48e2c7",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 48,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T11.json"
-  },
-  "T12": {
-   "owner": "W12",
-   "status": "done",
-   "artifact": "..\\..\\ops\\bus\\out\\T12-evidence.json",
-   "sha": "fb6191eb1d3d11a520d617280c470a9f4718f6b2074d2249cc05019a1ca9f9fd",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "last_reject": {
-    "at": "2026-11-21T13:59:26",
-    "receipt": "T12-evidence.json",
-    "errors": [
-     "缺字段: owner",
-     "缺字段: status",
-     "缺字段: artifact",
-     "缺字段: sha",
-     "缺字段: rows",
-     "task_id(T12) 与文件名(T12-evidence) 不一致",
-     "rows 必须是正整数（证据行数/检查项数）"
-    ]
-   },
-   "rows": 12,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T12.json"
-  },
-  "T13": {
-   "owner": "W13",
-   "status": "done",
-   "artifact": "..\\..\\ops\\context\\watch.py",
-   "sha": "5357328bffe1d215c3d2bb29f24d20024482943d81b655f8a53fb1b626b0d3a7",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 14,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T13.json"
-  },
-  "T14": {
-   "owner": "W14",
-   "status": "todo",
-   "artifact": "",
-   "sha": "",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "last_reject": {
-    "at": "2026-11-21T13:59:26",
-    "receipt": "T14.json",
-    "errors": []
-   }
-  },
-  "T15": {
-   "owner": "W15",
-   "status": "todo",
-   "artifact": "",
-   "sha": "",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "last_reject": {
-    "at": "2026-11-21T13:59:26",
-    "receipt": "T15.json",
-    "errors": []
-   }
-  },
-  "T16": {
-   "owner": "W16",
-   "status": "done",
-   "artifact": "..\\..\\reports\\cases\\T16_bigtech_cross_anchors.md",
-   "sha": "bf698110461100eb0334670038fe3effee5f3302e42c9c9307a6750c2a50d5c8",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 28,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T16.json"
-  },
-  "T17": {
-   "owner": "W17",
-   "status": "done",
-   "artifact": "..\\..\\reports\\cases\\T17_bankruptcy_10cases.md",
-   "sha": "5ece4faac1631286a0c6575175f206a0ca147ae1d13830e2de3b2d8690f5aa4a",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 16,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T17.json"
-  },
-  "T18": {
-   "owner": "W18",
-   "status": "done",
-   "artifact": "..\\..\\reports\\cases\\T18_developer_epitaphs.md",
-   "sha": "b13468393f8622bc5a039e53afbb8eba315ae897cb5ab4d6bce99d11f0a8ac78",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 20,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T18.json"
-  },
-  "T19": {
-   "owner": "W19",
-   "status": "done",
-   "artifact": "..\\..\\reports\\compliance\\T19_source_compliance_map.md",
-   "sha": "dc34dab1d5d01eca531a6a87f1b1c4f58759e60fb624a2563a52a1a881987362",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 18,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T19.json"
-  },
-  "T20": {
-   "owner": "W20",
-   "status": "done",
-   "artifact": "..\\..\\reports\\cases\\T20_advisor_observation_forms.md",
-   "sha": "ba76d71d2f31c9d10295e3bdd54c3fb5adca23bd08aa7932cc19177aabe40e39",
-   "budget_cny": 10,
-   "spent_cny": 0,
-   "rows": 24,
-   "verified_at": "2026-11-21T13:59:26",
-   "receipt": "out/T20.json"
+  "counts": {
+    "done": 16,
+    "cancelled": 1,
+    "todo": 2
   }
- }
 }

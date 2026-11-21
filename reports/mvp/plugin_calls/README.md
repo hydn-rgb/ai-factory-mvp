@@ -15,13 +15,13 @@
 | 05:57:18 | factory_status | ok | 当时 todo=4 / done=15 / cancelled=1 |
 | 05:57:18 | factory_audit | **失败** | `execFileSync` 因 `audit.py` 有拒收回执而非零退出抛错 |
 | 05:57:18 | factory_case(T1) | ok | sha `70d69b88…`，12418 字节，V1–V4 标题齐全 |
-| 05:57:18 | factory_probe(上交所灵均页) | ok | 200，27212 字节，sha `b727210b…` |
+| 05:57:18 | factory_probe(上交所机构B页) | ok | 200，27212 字节，sha `b727210b…` |
 | 05:57:24 | factory_audit | **失败** | 同上；已记录，不隐瞒 |
 | 05:58:26 | factory_audit | ok | 改用 `spawnSync` 读取 stdout；total=22 / accepted=17 / rejected=5 |
 | 05:59:18 | factory_status | ok | todo=2 / done=18 / cancelled=1（T0–T2 已收束） |
 | 05:59:18 | factory_audit | ok | 聚焦 T0/T1/T2：当时 T0 REJECT（sha 变更），T1/T2 ACCEPT |
 | 05:59:18 | factory_case(T2) | ok | sha `ddf8f30a…`，11828 字节 |
-| 05:59:18 | factory_probe(幻方官网) | ok | 200，365804 字节，sha `806f6bd0…` |
+| 05:59:18 | factory_probe(机构A官网) | ok | 200，365804 字节，sha `806f6bd0…` |
 | 05:59:31 | factory_audit | ok | T0/T1/T2 全部 ACCEPT(PASS)，total=25 / accepted=20 / rejected=5 |
 
 > 失败与修正都留痕：插件改用 `spawnSync` 读取 `audit.py --json` 的 stdout（该命令在有 `UNVERIFIED` 回执时返回非零退出码，但 JSON 有效）。这是真实调用的证据链，不是抹掉失败重跑。
