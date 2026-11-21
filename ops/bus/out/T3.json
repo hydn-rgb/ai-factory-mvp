@@ -1,56 +1,56 @@
 {
- "task_id": "T3",
- "owner": "W3",
- "status": "PASS",
- "artifact": "ops/buffer/dsh_buffer.py",
- "sha": "d3916e03f542c4b3b6918fd57e1723a01e5be6fb6056168befc58d0769debec9",
- "rows": 21,
- "level": "L1",
- "command": "python ops\\buffer\\dsh_buffer.py --self-test",
- "exit_code": 0,
- "request": "读 ops\\bus\\tasks\\T3.md，按卡做 DSH 缓冲层，回执写 out\\T3.json",
- "evidence_path": "..\\..\\ops\\buffer\\REPORT_T3.md",
- "report": {
-  "path": "..\\..\\ops\\buffer\\REPORT_T3.md",
-  "sha": "56a32be26977292975f8f3dc2a2837070d914fb6c0e2547d7d5702a7138def48"
- },
- "self_test": {
-  "passed": 21,
-  "total": 21,
+  "task_id": "T3",
+  "owner": "W3",
+  "status": "PASS",
+  "artifact": "ops/buffer/dsh_buffer.py",
+  "sha": "d3916e03f542c4b3b6918fd57e1723a01e5be6fb6056168befc58d0769debec9",
+  "rows": 21,
+  "level": "L1",
   "command": "python ops\\buffer\\dsh_buffer.py --self-test",
-  "exit_code": 0
- },
- "acceptance": {
-  "fake_completion": "REJECT",
-  "sha_mismatch": "REJECT",
-  "duplicate_owner": "REJECT",
-  "dsh_direct_write_protected": "REJECT+EVENT"
- },
- "rows_meaning": "自检检查项数（21 项，含 4 条验收）",
- "findings": [
-  {
-   "id": "INPUT_CARD_21_LINES",
-   "detail": "T3.md 为 21 行，超过卡内自定的 20 行上限；输入缓冲会拒收。未改卡，待 W0 修剪。",
-   "level": "OPEN"
+  "exit_code": 0,
+  "request": "读 ops\\bus\\tasks\\T3.md，按卡做 DSH 缓冲层，回执写 out\\T3.json",
+  "evidence_path": "..\\..\\ops\\buffer\\REPORT_T3.md",
+  "report": {
+    "path": "..\\..\\ops\\buffer\\REPORT_T3.md",
+    "sha": "c33ba64095a8593557efcb358bc564ef84cdb79b7aca3cbbafd9b89c08e653b8"
   },
-  {
-   "id": "STATE_STILL_TODO",
-   "detail": "state.json 中 T3 仍为 todo；本窗口不直写。推进提案：ops/buffer/proposals/prop-20261121T103307745588.json",
-   "level": "OPEN"
-  }
- ],
- "unverified": [
-  "DSH 侧尚未强制调用 handoff_to_dsh()/validate_receipt()，真实联调未做",
-  "会话与模型成本未估算；以官方余额对账为准",
-  "未改 DSH 配置（任务卡禁止）"
- ],
- "falsifiable": "若 check_handoff.py 返回非 0、自检少于 21/21，或任一验收用例被放行，则本回执作废",
- "budget": {
-  "limit_cny": 10,
-  "spent_cny": null,
-  "note": "本窗口无付费外部调用；成本以官方余额对账为准，不估价"
- },
- "verified_by": "ops/buffer/dsh_buffer.py --verify T3",
- "state_claim": null,
- "ts": "2026-11-21T10:33:07"
+  "self_test": {
+    "passed": 21,
+    "total": 21,
+    "command": "python ops\\buffer\\dsh_buffer.py --self-test",
+    "exit_code": 0
+  },
+  "acceptance": {
+    "fake_completion": "REJECT",
+    "sha_mismatch": "REJECT",
+    "duplicate_owner": "REJECT",
+    "dsh_direct_write_protected": "REJECT+EVENT"
+  },
+  "rows_meaning": "自检检查项数（21 项，含 4 条验收）",
+  "findings": [
+    {
+      "id": "INPUT_CARD_21_LINES",
+      "detail": "T3.md 为 21 行，超过卡内自定的 20 行上限；输入缓冲会拒收。未改卡，待 W0 修剪。",
+      "level": "OPEN"
+    },
+    {
+      "id": "STATE_STILL_TODO",
+      "detail": "state.json 中 T3 仍为 todo；本窗口不直写。推进提案：ops/buffer/proposals/prop-20261121T103307745588.json",
+      "level": "OPEN"
+    }
+  ],
+  "unverified": [
+    "DSH 侧尚未强制调用 handoff_to_dsh()/validate_receipt()，真实联调未做",
+    "会话与模型成本未估算；以官方余额对账为准",
+    "未改 DSH 配置（任务卡禁止）"
+  ],
+  "falsifiable": "若 check_handoff.py 返回非 0、自检少于 21/21，或任一验收用例被放行，则本回执作废",
+  "budget": {
+    "limit_cny": 10,
+    "spent_cny": null,
+    "note": "本窗口无付费外部调用；成本以官方余额对账为准，不估价"
+  },
+  "verified_by": "ops/buffer/dsh_buffer.py --verify T3",
+  "state_claim": null,
+  "ts": "2026-11-21T10:33:07"
 }

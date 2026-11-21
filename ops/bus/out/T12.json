@@ -1,30 +1,31 @@
 {
- "task_id": "T12",
- "owner": "W12",
- "status": "PASS",
- "artifact": "ops/bus/out/T12-evidence.json",
- "sha": "b0a93f5e8844330037f8ccc8e1c019064a894c1c28829e18e9aaddf6f1b7d9db",
- "rows": 12,
- "plugin_sha": "ba5a01192d685b4c",
- "installed_to": "<USER_HOME>\\.config\\opencode\\opencode.json",
- "plugin": "D:/AI_Factory/plugins/model_router",
- "config_backup": "<USER_HOME>\\.config\\opencode\\opencode.json.bak-model-router-20261121122615",
- "evidence": "node test_router.mjs -> ALL PASS; opencode.json plugins=[model_router]",
- "test_log": "D:\\AI_Factory\\plugins\\model_router\\test_log.jsonl",
- "acceptance": {
-  "three_task_types": "PASS doc->deepseek-flash, code->deepseek-flash, audit->deepseek-v4-pro (3 real sessions)",
-  "manual_model_priority": "PASS ses_e03a482adffemu6IPv5Cn6LzVI manual_skip kept deepseek-v4-pro",
-  "error_fallback": "PASS unit: switch-error-falls-back-default + hook-error-does-not-block",
-  "rollback_script": "PASS rollback.ps1 -> plugins=[] -> reinstall -> plugins=[model_router]",
-  "backup_before_change": "PASS 3 config backups created"
- },
- "notes": [
-  "强制启用：全局 plugins 数组，新建会话自动按任务类型选模",
-  "真实会话 0 次 fallback/error；日志 12 行",
-  "当前已安装状态；OpenCode Desktop 需重启后对本窗口生效",
-  "本任务成本约 $0.024 (≈¥0.17)，低于 ¥2 预算"
- ],
- "maintenance": true,
- "maintained_by": "W0",
- "maintain_reason": "W0 复跑 node test_router.mjs -> ALL PASS（含 fallback/manual/privacy），并确认 opencode.json plugins 已加载；产物锚定稳定 evidence 文件"
+  "task_id": "T12",
+  "owner": "W12",
+  "status": "PASS",
+  "artifact": "D:\\AI_Factory\\dist\\ai-factory-mvp\\ops\\bus\\out\\_attachments\\T12-evidence.json",
+  "sha": "b0a93f5e8844330037f8ccc8e1c019064a894c1c28829e18e9aaddf6f1b7d9db",
+  "rows": 12,
+  "plugin_sha": "ba5a01192d685b4c",
+  "installed_to": "<USER_HOME>\\.config\\opencode\\opencode.json",
+  "plugin": "D:/AI_Factory/plugins/model_router",
+  "config_backup": "<USER_HOME>\\.config\\opencode\\opencode.json.bak-model-router-20261121122615",
+  "evidence": "node test_router.mjs -> ALL PASS; opencode.json plugins=[model_router]",
+  "test_log": "D:\\AI_Factory\\plugins\\model_router\\test_log.jsonl",
+  "acceptance": {
+    "three_task_types": "PASS doc->deepseek-flash, code->deepseek-flash, audit->deepseek-v4-pro (3 real sessions)",
+    "manual_model_priority": "PASS ses_e03a482adffemu6IPv5Cn6LzVI manual_skip kept deepseek-v4-pro",
+    "error_fallback": "PASS unit: switch-error-falls-back-default + hook-error-does-not-block",
+    "rollback_script": "PASS rollback.ps1 -> plugins=[] -> reinstall -> plugins=[model_router]",
+    "backup_before_change": "PASS 3 config backups created"
+  },
+  "notes": [
+    "强制启用：全局 plugins 数组，新建会话自动按任务类型选模",
+    "真实会话 0 次 fallback/error；日志 12 行",
+    "当前已安装状态；OpenCode Desktop 需重启后对本窗口生效",
+    "本任务成本约 $0.024 (≈¥0.17)，低于 ¥2 预算"
+  ],
+  "maintenance": true,
+  "maintained_by": "W0",
+  "maintain_reason": "W0 复跑 node test_router.mjs -> ALL PASS（含 fallback/manual/privacy），并确认 opencode.json plugins 已加载；产物锚定稳定 evidence 文件",
+  "artifact_sha256": "b0a93f5e8844330037f8ccc8e1c019064a894c1c28829e18e9aaddf6f1b7d9db"
 }

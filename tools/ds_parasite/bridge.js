@@ -191,6 +191,95 @@ function cmdCapture(input) {
   return { ok: true, cmd: "capture", path: p, sha256: sha(text), bytes: text.length };
 }
 
+function fuzzyScore(text, q) {
+  const t = String(text || "").toLowerCase();
+  const s = String(q || "").trim().toLowerCase();
+  if (!s) return 0;
+  if (t.includes(s)) return 100;
+  // 中文/英文按字符子序列匹配，允许中间隔字
+  let i = 0;
+  for (const ch of t) if (ch === s[i]) i++;
+  if (i === s.length) return 60;
+  const tokens = s.split(/[\s,，、]+/).filter(Boolean);
+  if (tokens.length > 1 && tokens.every((x) => t.includes(x))) return 50;
+  return 0;
+}
+function skillDirs() {
+  const dirs = [join(ROOT, ".opencode", "skills")];
+  try {
+    const cfg = JSON.parse(readFileSync(join(process.env.USERPROFILE || "", ".config", "opencode", "opencode.json"), "utf8"));
+    for (const p of cfg.skills || []) if (p) dirs.push(Path_isAbsolute(p) ? p : join(ROOT, String(p).replace(/^D:\/AI_Factory\//i, "")));
+  } catch {}
+  return dirs;
+}
+function Path_isAbsolute(p) { return /^[A-Za-z]:[\\/]/.test(String(p)) || String(p).startsWith("/"); }
+function allSkills() {
+  const out = [];
+  for (const dir of skillDirs()) {
+    let entries = [];
+    try { entries = readdirSync(dir); } catch { continue; }
+    for (const e of entries) {
+      let p = join(dir, e, "SKILL.md");
+      if (!existsSync(p)) p = join(dir, e, "skills", "SKILL.md");
+      if (!existsSync(p)) continue;
+      const t = readFileSync(p, "utf8");
+      const nm = t.match(/^name:\s*(.+)$/m);
+      const ds = t.match(/^description:\s*(.+)$/m);
+      out.push({ name: (nm && nm[1] || e).trim(), description: (ds && ds[1] || "").trim().slice(0, 120), path: p });
+    }
+  }
+  return out;
+}
+function cmdSkills(arg) {
+  let list = allSkills();
+  if (arg) {
+    list = list.map((s) => ({ ...s, score: fuzzyScore(s.name + " " + s.description, arg) })).filter((s) => s.score > 0).sort((a, b) => b.score - a.score);
+  }
+  return { ok: true, cmd: "skills", count: list.length, skills: list.slice(0, 80).map(({ name, description, path }) => ({ name, description, path })) };
+}
+function cmdSkill(arg) {
+  const q = String(arg || "").trim();
+  const list = allSkills().map((s) => ({ ...s, score: fuzzyScore(s.name, q) || fuzzyScore(s.description, q) })).filter((s) => s.score > 0).sort((a, b) => b.score - a.score);
+  if (!list.length) return { ok: false, error: "没匹配到技能：" + q };
+  const s = list[0];
+  const t = readFileSync(s.path, "utf8");
+  return { ok: true, cmd: "skill", name: s.name, path: s.path, score: s.score, excerpt: t.slice(0, 3000) };
+}
+function cmdCard(arg) {
+  const id = String(arg || "").toUpperCase().match(/T\d+/)?.[0];
+  if (!id) return { ok: false, error: "用法：/card T14" };
+  const p = join(ROOT, "ops", "bus", "tasks", id + ".md");
+  if (!existsSync(p)) return { ok: false, error: "任务卡不存在：" + id };
+  const t = readFileSync(p, "utf8");
+  return { ok: true, cmd: "card", id, path: p, sha256: sha(t), excerpt: t.slice(0, 2200) };
+}
+function cmdFind(arg) {
+  const q = String(arg || "").trim();
+  if (!q) return { ok: false, error: "用法：/find 关键词" };
+  const hits = [];
+  for (const s of allSkills()) {
+    const sc = fuzzyScore(s.name + " " + s.description, q);
+    if (sc) hits.push({ type: "skill", name: s.name, cmd: "/skill " + s.name, score: sc, path: s.path });
+  }
+  const CASE_KW = {
+    T0: "范围 mvp 边界 签收 发布 同行定位", T1: "幻方 highflyer deepseek 梁文锋 算力",
+    T2: "灵均 lingjun 处罚 异常交易 合规", T16: "大厂 锚点 失败案例", T17: "破产 10案 捡漏",
+    T18: "墓志铭 开发者 不做", T19: "合规 信源 地图 红线", T20: "观察表 律师 财税",
+  };
+  for (const [id, rel] of Object.entries(CASE_MAP)) {
+    const sc = fuzzyScore(id + " " + rel + " " + (CASE_KW[id] || ""), q);
+    if (sc) hits.push({ type: "case", name: id + " " + rel.split("/").pop(), cmd: "/case " + id, score: sc + 10, path: rel });
+  }
+  try {
+    for (const f of readdirSync(join(ROOT, "ops/bus/tasks"))) {
+      const sc = fuzzyScore(f, q);
+      if (sc) hits.push({ type: "card", name: f, cmd: "/card " + f.replace(/\.md$/, ""), score: sc, path: "ops/bus/tasks/" + f });
+    }
+  } catch {}
+  hits.sort((a, b) => b.score - a.score);
+  return { ok: true, cmd: "find", query: q, count: hits.length, hits: hits.slice(0, 30) };
+}
+
 async function dispatch(input) {
   const cmd = String(input.cmd || "").replace(/^\//, "").trim().toLowerCase();
   const arg = String(input.arg || "").trim();
@@ -202,12 +291,13 @@ async function dispatch(input) {
     compliance: () => cmdDoc("reports/compliance/T19_source_compliance_map.md", "compliance"),
     inventory: () => cmdDoc("reports/inventory/ACTIVE_INVENTORY.md", "inventory"),
     selftest: () => cmdSelftest(),
+    skills: () => cmdSkills(arg), skill: () => cmdSkill(arg), card: () => cmdCard(arg), find: () => cmdFind(arg),
     open_capture: () => {
       const dir = join(ROOT, "reports", "ds_capture");
       spawnSync("explorer.exe", [dir], { windowsHide: true });
       return { ok: true, cmd: "open_capture", path: dir };
     },
-    help: () => ({ ok: true, cmd: "help", commands: ["/status", "/audit", "/handoff", "/ds", "/probe <url>", "/capture", "/note <文本>", "/goto <url>", "/click <文字>", "/fill <标签> <值>", "/open_capture", "/mvp", "/cases", "/case T1", "/compliance", "/inventory", "/selftest"] }),
+    help: () => ({ ok: true, cmd: "help", commands: ["/status", "/audit", "/handoff", "/ds", "/probe <url>", "/capture", "/note <文本>", "/goto <url>", "/click <文字>", "/fill <标签> <值>", "/open_capture", "/mvp", "/cases", "/case T1", "/compliance", "/inventory", "/selftest", "/skills [关键词]", "/skill <名称>", "/card T14", "/find <关键词>"] }),
   };
   if (!map[cmd]) return { ok: false, error: "未知命令：" + cmd + "；用 /help 查看" };
   return await map[cmd]();
