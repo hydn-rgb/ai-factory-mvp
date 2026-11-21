@@ -2,7 +2,7 @@
  "task_id": "T20",
  "owner": "W20",
  "status": "PASS",
- "artifact": "..\\..\\reports\\cases\\T20_advisor_observation_forms.md",
+ "artifact": "reports/cases/T20_advisor_observation_forms.md",
  "sha": "ba76d71d2f31c9d10295e3bdd54c3fb5adca23bd08aa7932cc19177aabe40e39",
  "rows": 24,
  "rows_definition": "律师 12 项 + 财税 12 项 + 合作触发条件",

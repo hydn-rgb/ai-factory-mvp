@@ -1,0 +1,56 @@
+{
+  "task_id": "T12",
+  "generated_at": "2026-11-21T12:27:30+08:00",
+  "opencode_version": "2.2.5",
+  "global_config": "<home>\\.config\\opencode\\opencode.json",
+  "plugins": ["<repo>/plugins/model_router"],
+  "unit_test": {
+    "command": "node test_router.mjs",
+    "result": "ALL PASS",
+    "checks": 11,
+    "log_rows": 12
+  },
+  "real_sessions": [
+    {
+      "case": "doc",
+      "session": "ses_e03a4e8eeffeQda0EzCEgb1sFw",
+      "event": "switch",
+      "task_type": "doc",
+      "model": "deepseek/deepseek-flash",
+      "prompt": "请写一句 README 文档说明，只回复一句话"
+    },
+    {
+      "case": "code",
+      "session": "ses_e03a4c7b4ffeDTyRaoMDr026po",
+      "event": "switch",
+      "task_type": "code",
+      "model": "deepseek/deepseek-flash",
+      "prompt": "修复这个 bug 的函数，只回复一句话"
+    },
+    {
+      "case": "audit",
+      "session": "ses_e03a4acdbffeifiXV1jBEjqF2v",
+      "event": "switch",
+      "task_type": "audit",
+      "model": "deepseek/deepseek-v4-pro",
+      "prompt": "审计这段代码的安全性，只回复一句话"
+    },
+    {
+      "case": "manual_override",
+      "session": "ses_e03a482adffemu6IPv5Cn6LzVI",
+      "event": "manual_skip",
+      "task_type": null,
+      "model": "deepseek/deepseek-v4-pro",
+      "prompt": "opencode run --model deepseek/deepseek-v4-pro \"请写一句 README 文档说明，只回复一句话\""
+    }
+  ],
+  "rollback_test": {
+    "removed": true,
+    "plugins_after_rollback": [],
+    "reinstalled": true,
+    "plugins_after_reinstall": ["<repo>/plugins/model_router"],
+    "backup": "<home>\\.config\\opencode\\opencode.json.bak-model-router-rollback-20261121122705"
+  },
+  "real_fallback_count": 0,
+  "cost_usd": 0.02397
+}

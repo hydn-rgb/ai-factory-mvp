@@ -2,7 +2,7 @@
  "task_id": "T14",
  "owner": "W14",
  "status": "UNVERIFIED",
- "artifact": "..\\..\\ops\\probe\\T14_nonstandard_demand_probe.md",
+ "artifact": "ops/probe/T14_nonstandard_demand_probe.md",
  "sha": "027fc7b5f92078880c2ae35c2420879171ab474fe5c7b55588b52893b9cbb325",
  "sha16": "027fc7b5f9207888",
  "rows": 5,

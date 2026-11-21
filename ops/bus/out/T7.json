@@ -2,7 +2,7 @@
  "task_id": "T7",
  "owner": "W7",
  "status": "PASS",
- "artifact": "..\\..\\ops\\probe\\T7_ds_process_probe.md",
+ "artifact": "ops/probe/T7_ds_process_probe.md",
  "sha": "724a956fbd24c95212132f9212074e09e7d330b4a2db2a25ecaf33e5d9ebd399",
  "sha16": "724a956fbd24c952",
  "rows": 10,

@@ -16,7 +16,18 @@
 | `/goto <url>` | 跳到指定 http(s) 地址 —— 例如豆包手机宣传片页面 |
 | `/click <文字>` | 点击页面上包含该文字的按钮/链接 |
 | `/fill <标签> <值>` | 按 placeholder/aria-label/label 找到输入框并填入 |
+| `/mvp` | T0–T20 完成度、开放卡、发行 commit |
+| `/cases` / `/case T1` | 列出 / 读取案例卡（幻方、灵均、T16–T20） |
+| `/compliance` | T19 信源合规地图（G/Y/R 三层 + 5 类不碰） |
+| `/inventory` | 在用资产清单与 sha |
+| `/selftest` | 跑一次发行包自检 |
 | `/help` | 帮助 |
+
+## 上下文助手（你要的“宣传片里那种能力”）
+
+- 头部绿色 **⚡链接本页**：一键把当前页正文、URL、标题存入 `reports/browser_capture/`，返回路径与 sha；等价于 `/capture`，但不用打字。
+- 打开任意网页后悬浮窗就有上下文：`/probe` 卡片会自动填入当前页 URL；`/case`、`/mvp`、`/compliance` 直接调已完成的 MVP 功能。
+- “功能说明”里每张能力卡都可点击填入命令，像发布会演示一样逐条调用。
 
 ## Siri 式功能说明
 

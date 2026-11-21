@@ -110,6 +110,56 @@ function cmdDs() {
   if (!existsSync(p)) return { ok: false, error: "尚无 DS 捕获" };
   return { ok: true, cmd: "ds", ...JSON.parse(readFileSync(p, "utf8")) };
 }
+
+const CASE_MAP = {
+  T0: "reports/mvp/T0_MVP_SCOPE.md", T1: "reports/cases/highflyer_v4.md", T2: "reports/cases/lingjun_v4.md",
+  T16: "reports/cases/T16_bigtech_cross_anchors.md", T17: "reports/cases/T17_bankruptcy_10cases.md",
+  T18: "reports/cases/T18_developer_epitaphs.md", T19: "reports/compliance/T19_source_compliance_map.md",
+  T20: "reports/cases/T20_advisor_observation_forms.md",
+};
+function cmdCase(arg) {
+  const id = String(arg || "").toUpperCase();
+  const rel = CASE_MAP[id];
+  if (!rel) return { ok: false, error: "可用案例：" + Object.keys(CASE_MAP).join(",") };
+  const p = join(ROOT, rel);
+  if (!existsSync(p)) return { ok: false, error: "文件不存在：" + rel };
+  const b = readFileSync(p);
+  return { ok: true, cmd: "case", id, path: p, sha256: sha(b.toString("utf8")), bytes: b.length, excerpt: b.toString("utf8").slice(0, 1800) };
+}
+function cmdCases() {
+  const files = [];
+  for (const dir of ["reports/cases", "reports/mvp", "reports/compliance"]) {
+    const d = join(ROOT, dir);
+    if (existsSync(d)) for (const f of readdirSync(d).filter((x) => x.endsWith(".md"))) files.push(dir + "/" + f);
+  }
+  return { ok: true, cmd: "cases", count: files.length, files: files.slice(0, 120) };
+}
+function cmdMvp() {
+  const state = JSON.parse(readFileSync(join(ROOT, "ops", "bus", "state.json"), "utf8"));
+  const counts = {};
+  for (const t of Object.values(state.tasks || {})) counts[t.status] = (counts[t.status] || 0) + 1;
+  const release = join(ROOT, "dist", "ai-factory-mvp");
+  let commit = "unknown";
+  if (existsSync(release)) {
+    const r = spawnSync("git", ["-C", release, "log", "-1", "--format=%h %s"], { encoding: "utf8", timeout: 10_000 });
+    if (!r.error && r.stdout) commit = r.stdout.trim();
+  }
+  return { ok: true, cmd: "mvp", counts, cards: Object.keys(state.tasks || {}).length, receipts: readdirSync(join(ROOT, "ops", "bus", "out")).filter((f) => /^T\d+\.json$/.test(f)).length, release_commit: commit, open: Object.entries(state.tasks || {}).filter(([, v]) => v.status === "todo" || v.status === "doing").map(([k]) => k) };
+}
+function cmdDoc(rel, cmd) {
+  const p = join(ROOT, rel);
+  if (!existsSync(p)) return { ok: false, error: "文件不存在：" + rel };
+  const t = readFileSync(p, "utf8");
+  return { ok: true, cmd, path: p, sha256: sha(t), excerpt: t.slice(0, 2200) };
+}
+function cmdSelftest() {
+  const script = join(ROOT, "dist", "ai-factory-mvp", "selftest.ps1");
+  if (!existsSync(script)) return { ok: false, error: "selftest.ps1 不存在" };
+  const r = spawnSync("powershell", ["-ExecutionPolicy", "Bypass", "-File", script], { cwd: join(ROOT, "dist", "ai-factory-mvp"), encoding: "utf8", timeout: 180_000, maxBuffer: 4 * 1024 * 1024 });
+  // powershell.exe 重定向时偶尔输出 UTF-16LE，去掉空字节再匹配
+  const out = (String(r.stdout || "") + String(r.stderr || "")).replace(/\0/g, "");
+  return { ok: !r.error && r.status === 0 && /SELFTEST PASS/.test(out), cmd: "selftest", tail: out.slice(-1200) };
+}
 function cmdNote(arg) {
   if (!arg) return { ok: false, error: "用法：/note 内容" };
   const dir = join(ROOT, "reports", "inbox");
@@ -148,12 +198,16 @@ async function dispatch(input) {
     status: () => cmdStatus(), audit: () => cmdAudit(), handoff: () => cmdHandoff(),
     ds: () => cmdDs(), note: () => cmdNote(arg), probe: () => cmdProbe(arg),
     capture: () => cmdCapture(input),
+    mvp: () => cmdMvp(), cases: () => cmdCases(), case: () => cmdCase(arg),
+    compliance: () => cmdDoc("reports/compliance/T19_source_compliance_map.md", "compliance"),
+    inventory: () => cmdDoc("reports/inventory/ACTIVE_INVENTORY.md", "inventory"),
+    selftest: () => cmdSelftest(),
     open_capture: () => {
       const dir = join(ROOT, "reports", "ds_capture");
       spawnSync("explorer.exe", [dir], { windowsHide: true });
       return { ok: true, cmd: "open_capture", path: dir };
     },
-    help: () => ({ ok: true, cmd: "help", commands: ["/status", "/audit", "/handoff", "/ds", "/probe <url>", "/capture", "/note <文本>", "/goto <url>", "/click <文字>", "/fill <标签> <值>", "/open_capture"] }),
+    help: () => ({ ok: true, cmd: "help", commands: ["/status", "/audit", "/handoff", "/ds", "/probe <url>", "/capture", "/note <文本>", "/goto <url>", "/click <文字>", "/fill <标签> <值>", "/open_capture", "/mvp", "/cases", "/case T1", "/compliance", "/inventory", "/selftest"] }),
   };
   if (!map[cmd]) return { ok: false, error: "未知命令：" + cmd + "；用 /help 查看" };
   return await map[cmd]();

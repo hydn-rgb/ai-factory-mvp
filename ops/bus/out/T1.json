@@ -2,7 +2,7 @@
  "task_id": "T1",
  "owner": "W1",
  "status": "PASS",
- "artifact": "..\\..\\reports\\cases\\highflyer_v4.md",
+ "artifact": "reports/cases/highflyer_v4.md",
  "sha": "70d69b88f8db35145c4f37e86e14c96198b2a7f3aca8e4e16fe143e24fb1cf51",
  "rows": 21,
  "rows_definition": "21 行：12 条事实 + 1 条推断 + 8 条来源",

@@ -2,7 +2,7 @@
  "task_id": "T9",
  "owner": "W9",
  "status": "PASS",
- "artifact": "..\\..\\projects\\cognitive_gym\\BUILD.json",
+ "artifact": "projects/cognitive_gym/BUILD.json",
  "sha": "3bcdef1a2d8fc12806cb5330c5aadb39718d6e4f9a483a9fe6b8ec31f9ddce73",
  "artifact_dir": "D:\\AI_Factory\\projects\\cognitive_gym",
  "entry": "server.py",

@@ -2,7 +2,7 @@
  "task_id": "T18",
  "owner": "W18",
  "status": "PASS",
- "artifact": "..\\..\\reports\\cases\\T18_developer_epitaphs.md",
+ "artifact": "reports/cases/T18_developer_epitaphs.md",
  "sha": "b13468393f8622bc5a039e53afbb8eba315ae897cb5ab4d6bce99d11f0a8ac78",
  "rows": 20,
  "rows_definition": "20 例墓志铭 + 5 条死因聚类 + 10 条不做清单",

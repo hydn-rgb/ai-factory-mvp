@@ -2,7 +2,7 @@
  "task_id": "T17",
  "owner": "W17",
  "status": "PASS",
- "artifact": "..\\..\\reports\\cases\\T17_bankruptcy_10cases.md",
+ "artifact": "reports/cases/T17_bankruptcy_10cases.md",
  "sha": "5ece4faac1631286a0c6575175f206a0ca147ae1d13830e2de3b2d8690f5aa4a",
  "rows": 16,
  "rows_definition": "10 案 + 3 失败解剖 + 3 条四要素信号",

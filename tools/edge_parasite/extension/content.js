@@ -15,6 +15,12 @@
     ["👆", "/click <文字>", "按文字点页面上的按钮/链接"],
     ["⌨️", "/fill <标签> <值>", "按 placeholder/label 找输入框填入"],
     ["📂", "/open_capture", "打开 DS 捕获文件所在目录"],
+    ["🏭", "/mvp", "一张卡看全：T0–T20 完成度、开放卡、发行 commit"],
+    ["🗂", "/cases", "列出工厂所有案例卡（幻方/灵均/破产10案/合规地图等）"],
+    ["📕", "/case T1", "读一张案例卡：幻方 / 灵均 / T16–T20 的 sha 与摘录"],
+    ["🛡", "/compliance", "读 T19 信源合规地图：G/Y/R 三层与 5 类不碰"],
+    ["📦", "/inventory", "读在用资产清单与 sha"],
+    ["🧪", "/selftest", "跑一次发行包自检，确认 MVP 仍然 PASS"],
   ];
 
   function build() {
@@ -25,6 +31,7 @@
         <span id="fec-orb" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#a7f3d0;margin-right:6px;box-shadow:0 0 8px #34d399;animation:fecpulse 2s infinite"></span>
         <b>Factory 助手</b><span style="opacity:.7"> 说一句，或点“功能说明”</span>
         <button id="fec-cards" style="float:right;background:rgba(255,255,255,.18);border:0;color:#fff;border-radius:4px;cursor:pointer;padding:1px 5px">功能说明</button>
+        <button id="fec-link" style="float:right;background:#34d399;color:#052e16;border:0;border-radius:4px;cursor:pointer;padding:1px 5px;margin-right:4px;font-weight:bold">⚡链接本页</button>
         <button id="fec-close" style="float:right;background:none;border:0;color:#fff;cursor:pointer;margin-right:4px">×</button>
       </div>
       <div style="background:rgba(2,6,23,.92);backdrop-filter:blur(10px);color:#e2e8f0;padding:8px;font:12px/1.5 system-ui;width:360px;border-radius:0 0 8px 8px">
@@ -43,8 +50,13 @@
       CAPS.map((c) => '<div data-cmd="' + c[1].split(' ')[0] + '" style="display:flex;gap:6px;align-items:center;padding:4px 6px;background:#1e293b;border:1px solid #334155;border-radius:6px;cursor:pointer">' +
         '<span>' + c[0] + '</span><span><b>' + c[1] + '</b><br><span style="opacity:.7">' + c[2] + '</span></span></div>').join('') + '</div>';
     capEl.querySelectorAll("[data-cmd]").forEach((el) => {
-      el.onclick = () => { const c = CAPS.find((x) => x[1].split(' ')[0] === el.getAttribute('data-cmd')); input.value = c[1]; input.focus(); };
+      el.onclick = () => {
+        const c = CAPS.find((x) => x[1].split(' ')[0] === el.getAttribute('data-cmd'));
+        input.value = c[1] === "/probe <url>" ? ("/probe " + location.href) : c[1];
+        input.focus();
+      };
     });
+    root.querySelector("#fec-link").onclick = () => run("/capture");
     root.querySelector("#fec-cards").onclick = () => { capEl.style.display = capEl.style.display === "none" ? "" : "none"; };
     root.querySelector("#fec-close").onclick = () => { root.style.display = "none"; };
     input.addEventListener("keydown", (e) => {

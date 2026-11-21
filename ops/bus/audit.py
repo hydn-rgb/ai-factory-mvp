@@ -173,7 +173,8 @@ def audit_receipt(path, state, bus=None):
     art = Path(res["artifact"]) if res["artifact"] else None
     if art is not None:
         if not art.is_absolute():
-            art = bus / art
+            # 发行包内回执路径统一相对仓库根（check_handoff 同样按 CWD 解析）
+            art = Path(bus).parent.parent / art
         if not art.exists():
             res["errors"].append("产物不存在: %s" % art)
         elif art.is_dir():

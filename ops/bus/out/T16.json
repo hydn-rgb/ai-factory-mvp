@@ -2,7 +2,7 @@
  "task_id": "T16",
  "owner": "W16",
  "status": "PASS",
- "artifact": "..\\..\\reports\\cases\\T16_bigtech_cross_anchors.md",
+ "artifact": "reports/cases/T16_bigtech_cross_anchors.md",
  "sha": "bf698110461100eb0334670038fe3effee5f3302e42c9c9307a6750c2a50d5c8",
  "rows": 28,
  "rows_meaning": "20 个锚点 + 5 个失败案例 + 3 条反事实",

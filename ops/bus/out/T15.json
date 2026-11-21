@@ -2,7 +2,7 @@
  "task_id": "T15",
  "owner": "W15",
  "status": "UNVERIFIED",
- "artifact": "..\\..\\ops\\probe\\T15_lawyer_process_probe.md",
+ "artifact": "ops/probe/T15_lawyer_process_probe.md",
  "sha": "51e16adc40271186bf3bf2f1ecf53639077cdd55288655ed9b4c1c8b8753c484",
  "sha16": "51e16adc40271186",
  "rows": 9,

@@ -2,8 +2,8 @@
  "task_id": "T4",
  "owner": "W4",
  "status": "PASS",
- "artifact": "..\\..\\plugins\\model_router\\index.js",
- "sha": "e922ea94123a99fe",
+ "artifact": "plugins/model_router/index.js",
+ "sha": "e922ea94123a99feb4655d7cb76b2e187593f2504e311f2c9d4e014f3f20fcc9",
  "rows": 10,
  "artifact_dir": "D:\\AI_Factory\\plugins\\model_router",
  "files": {

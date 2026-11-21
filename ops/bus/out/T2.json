@@ -2,7 +2,7 @@
  "task_id": "T2",
  "owner": "W2",
  "status": "PASS",
- "artifact": "..\\..\\reports\\cases\\lingjun_v4.md",
+ "artifact": "reports/cases/lingjun_v4.md",
  "sha": "ddf8f30a38e2c36a08743607fdedcdf66e3e43b1b6b13ce83b4e4e7f1d1fcdaf",
  "rows": 22,
  "rows_definition": "22 行：13 条事实 + 1 条推断 + 8 条来源",

@@ -2,7 +2,7 @@
  "task_id": "T3",
  "owner": "W3",
  "status": "PASS",
- "artifact": "..\\..\\ops\\buffer\\dsh_buffer.py",
+ "artifact": "ops/buffer/dsh_buffer.py",
  "sha": "d3916e03f542c4b3b6918fd57e1723a01e5be6fb6056168befc58d0769debec9",
  "rows": 21,
  "level": "L1",

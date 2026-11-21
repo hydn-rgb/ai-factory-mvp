@@ -2,7 +2,7 @@
  "task_id": "T19",
  "owner": "W19",
  "status": "PASS",
- "artifact": "..\\..\\reports\\compliance\\T19_source_compliance_map.md",
+ "artifact": "reports/compliance/T19_source_compliance_map.md",
  "sha": "dc34dab1d5d01eca531a6a87f1b1c4f58759e60fb624a2563a52a1a881987362",
  "rows": 18,
  "rows_definition": "18 个信源三层合规地图 + 3 条硬规则",
