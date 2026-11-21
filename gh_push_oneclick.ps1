@@ -37,7 +37,8 @@ if (Test-GhLogin) {
     $txt = ""
     if (Test-Path $out) { $txt += (Get-Content $out -Raw -ErrorAction SilentlyContinue) }
     if (Test-Path $err) { $txt += (Get-Content $err -Raw -ErrorAction SilentlyContinue) }
-    if ($txt -match '(?i)one-time code:\s*([A-Z0-9]{4}-[A-Z0-9]{4})') { $code = $matches[1]; break }
+    # 兼容两种格式：老版 "one-time code: XXXX-XXXX" / 新版 "One-time code (XXXX-XXXX)"
+    if ($txt -match '(?i)one-time code[\s:(]*([A-Z0-9]{4}-[A-Z0-9]{4})') { $code = $matches[1]; break }
   }
 
   if (-not $code) {
